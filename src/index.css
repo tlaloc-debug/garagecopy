@@ -1,0 +1,1031 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald|Noto+Sans");
+
+/*                  commen style                   */
+
+.horizontal{
+    display: flex;
+    justify-content: center;
+}
+
+.vertical {
+    display: flex;
+    align-items: center;
+}
+
+/*                   end common style                   */
+
+/*                  main style                   */
+
+.backmain{
+    position: relative; 
+    width: 100%;
+    height: 600px;
+}
+
+.backphoto{
+    position: absolute;
+    background-image: url("./car.jpg");
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/*                   end main style                   */
+
+
+
+/*                  top menu style                   */
+
+.bartopnav{
+    position: absolute;
+    width: 80%;
+    height: 30px;
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+.bartopnavcontainer{
+    width: 80%;
+    height: 30px;
+}
+
+.canflag {
+    width: 30px;
+    height: 15px;
+    background-image: url("./canflag.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+}
+
+.topnav{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+
+.top {
+    display: inline-block;
+    padding: 0px 20px;
+    width: 60px;
+    border-left: solid white;
+}
+
+.icon {
+    padding: 0px 10px;
+}
+
+.name {
+    position: relative;
+    display: flex;
+    width: 80%;
+    height: 120px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    opacity: 0.8;
+    padding-left: 15%;
+}
+
+.logo {
+    width: 160px;
+    height: 80px;
+    background-image: url("./logo.png");
+}
+
+.phone {
+    position: absolute;
+    height: 120px;
+    right: 15px;
+    font-family: Oswald, sans-serif;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+}
+
+/*                  end top menu style                   */
+
+
+
+/*                  menu style                   */
+
+
+.barmenu{
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+.menulist{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: left;
+    color: white;
+}
+
+.menu {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+ul {
+    margin: 0px;
+}
+
+.clasicbox {
+    width: 100%;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    height: 100%;
+    background-color: #408CCC;
+    opacity: 0.8;  
+}
+
+.services {
+    position: absolute;
+    right: 0px;
+    width: 280px;
+    height: 100%;
+    font-family: Oswald, sans-serif;
+    color: white;
+    padding-top: 20px;
+}
+
+@keyframes appear {
+    from {opacity: 0;}
+    to {opacity: 0.8;}
+  }
+
+.clasic1 {
+    position: relative;
+    background-color: white; 
+    width: 1000px;
+    height: 100%;
+}
+
+.car1 {
+    position: absolute;
+    width: 520px;
+    height: 300px;
+    background-image: url("./car1.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.car2 {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 470px;
+    height: 250px;
+    background-image: url("./car2.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.car3 {
+    position: absolute;
+    bottom: 0px;
+    left: 320px;
+    width: 200px;
+    height: 180px;
+    background-image: url("./car3.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.car4 {
+    position: absolute;
+    bottom: 0px;
+    width: 310px;
+    height: 180px;
+    background-image: url("./car4.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.car5 {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 237px;
+    height: 280px;
+    background-image: url("./car5.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.car6 {
+    position: absolute;
+    top: 0px;
+    left: 530px;
+    width: 225px;
+    height: 280px;
+    background-image: url("./car6.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.clasic2 {
+    position: relative;
+    background-image: url("./client.png");
+    width: 1000px;
+    height: 100%;
+}
+
+.clasic3 {
+    position: relative;
+    background-image: url("./services.png");
+    width: 1000px;
+    height: 100%;
+}
+
+.clasic4 {
+    position: relative;
+    background-image: url("./tires.png");
+    width: 1000px;
+    height: 100%;
+}
+
+/*                  end menu style                   */
+
+
+/*                  blocks and reviews style                   */
+
+.description {
+    width: 90%;
+    height: 500px;
+    display: flex;
+}
+
+.divleft {
+    display: inline-block;
+    padding: 15px;
+    width: 45%;
+}
+
+.lenguaje {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    width: 200px;
+    height: 200px;
+}
+
+.lenguajeback {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    background-image: url("./front.jpg");
+    background-position: 0px 33px;
+    background-repeat: no-repeat;
+    background-size: 100%;    
+}
+
+.lenguajebox {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    background-color: #304169;
+    opacity: 0.4;      
+}
+
+.knowing {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    width: 200px;
+    height: 200px;
+}
+
+.knowingback {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    background-image: url("./motor.jpg");
+    background-position: 0px 30px;
+    background-repeat: no-repeat;
+    background-size: 100%;     
+}
+
+.knowingbox {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    background-color: #434e4a;
+    opacity: 0.4;   
+}
+
+.whatcould {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    width: 200px;
+    height: 200px;
+}
+
+.whatcouldback {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    background-image: url("./problems.jpg");
+    background-position: 0px 32px;
+    background-repeat: no-repeat;
+    background-size: 100%;     
+}
+
+.whatcouldbox {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    background-color: #3464b9;
+    opacity: 0.4;   
+}
+
+.movie {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    width: 200px;
+    height: 200px;
+}
+
+.movieback {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    background-image: url("./movie.png");
+    background-position: 0px 22px;
+    background-repeat: no-repeat;
+    background-size: 100%;     
+}
+
+.moviebox {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    opacity: 0.4;   
+}
+
+.pieces {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    width: 180px;
+    height: 200px;
+    background-image: url("./pieces1.jpg");
+    background-position: 0px 22px;
+    background-repeat: no-repeat;
+    background-size: 100%;  
+}
+
+.titleboxes {
+    position: absolute;
+    font-family: Oswald, sans-serif;
+    font-size: 1.6em;
+    padding: 0px 10px; 
+    color: white;
+    padding-top: 30px;
+}
+
+.textboxes {
+    position: absolute;
+    top: 100px;
+    font-family: Oswald, sans-serif;
+    font-size: 1.3em;
+    padding: 0px 10px; 
+    color: white;
+    font-weight: bold;
+}
+
+.divright {
+    padding-top: 30px;
+    display: inline-block;
+    width: 55%;
+}
+
+.average {
+    display: flex;
+    width: 100%;
+    height: 100px;
+}
+
+.total {
+    width: 30%;
+}
+
+.bars {
+    width: 40%;
+}
+
+.stars {
+    width: 30%;
+}
+
+.reviews {
+    width: 100%;
+    height: 300px;
+    overflow: scroll;
+}
+
+.person {
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+
+.face1 {
+    background-image: url("./maria.jpg");
+    background-repeat: no-repeat;
+    background-position: -15px 0px;
+    width: 70px;
+    height: 70px;
+    margin: 15px 0px;
+    background-size: 150%;
+    border-radius: 50px;
+    border: solid 2px #408CCC;
+}
+
+.face2 {
+    background-image: url("./juan.jpg");
+    background-repeat: no-repeat;
+    width: 70px;
+    height: 70px;
+    margin: 15px 0px;
+    background-size: 100%;
+    border-radius: 50px;
+    border: solid 2px #408CCC;
+}
+
+.face3 {
+    background-image: url("./laura.jpg");
+    background-repeat: no-repeat;
+    background-position: -15px 0px;
+    width: 70px;
+    height: 70px;
+    margin: 15px 0px;
+    background-size: 150%;
+    border-radius: 50px;
+    border: solid 2px #408CCC;
+}
+
+.face4 {
+    background-image: url("./panfilo.jpg");
+    background-repeat: no-repeat;
+    background-position: -5px 0px;
+    width: 70px;
+    height: 70px;
+    margin: 15px 0px;
+    background-size: 120%;
+    border-radius: 50px;
+    border: solid 2px #408CCC;
+}
+
+.face5 {
+    background-image: url("./sarah.jpg");
+    background-repeat: no-repeat;
+    background-position: -5px 0px;
+    width: 70px;
+    height: 70px;
+    margin: 15px 0px;
+    background-size: 120%;
+    border-radius: 50px;
+    border: solid 2px #408CCC;
+}
+
+.comment {
+    padding-left: 20px;
+    width: 65%;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+}
+
+/*                  end blocks and reviews style                   */
+
+
+/*                  map style                   */
+
+
+.graybar {
+    width: 100%;
+    height: 80px;  
+    background-color: gray;
+    opacity: 0.5;
+}
+
+.barbox {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.northamerica {
+    width: 500px;
+    height: 500px;
+    background-image: url("./north.png");
+    background-repeat: no-repeat;
+    background-position: 0px 30px;
+    background-size: 100%;
+    margin-top: 50px;
+}
+
+/*                  common style for three boxes                   */
+
+.map {
+    position: relative;
+    padding: 5px;  
+    margin: 10px;
+}
+
+.mapbar {
+    background-color: #408CCC;
+    opacity: 0.5;
+    width: 250px;
+    height: 30px;
+}
+
+.mapbox {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 250px;
+    font-family: Oswald, sans-serif;
+    font-size: 1.3em;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+.mapborder {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 250px;
+    height: 250px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #408CCC;
+    border-radius: 20px;
+}
+
+.mapa1 {
+    position: absolute;
+    transition:  width 0.5s;
+    top: 35px;
+    right: 5px;
+    width: 0px;
+    height: 220px;
+    border-radius: 20px;
+    border: none;
+}
+
+.mapa2 {
+    position: absolute;
+    transition:  width 0.5s;
+    top: 35px;
+    right: 5px;
+    width: 250px;
+    height: 220px;
+    border-radius: 20px;
+    border: none;
+}
+
+/*                  end common style for three boxes                   */
+
+
+/*                  style for mexico box                   */
+.mexico {
+    background-image: url("./mexico.png");
+    background-position: 0px 15px;
+    width: 250px;
+    height: 220px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    transition: 0.5s;
+}
+
+.mexico:hover {
+    background-size: 500%;
+    background-position: -600px -600px; 
+}
+
+.mexico:hover .nameAgs {
+    opacity: 1;
+}
+
+.nameAgs {
+    position: absolute;
+    top: 220px;
+    left: 30px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    background-color: #408CCC;
+    color: white;
+    font-family: Oswald, sans-serif;
+    padding: 0px 10px;
+}
+
+/*                  end style for mexico box                   */
+
+/*                  style for mexico addres on map                   */
+
+.textmexico {
+    position: absolute;
+    top: -80px;
+    right: 10px;
+    width: 200px;
+    height: 130px;
+    background-color: #408CCC;
+    opacity: 0.8;  
+}
+
+.textmexicofix {
+    position: absolute;
+    top: -80px;
+    right: 10px;
+    width: 200px;
+    height: 130px;
+    background-color: #408CCC;
+    opacity: 1;  
+}
+
+.addresmexico {
+    font-family: Oswald, sans-serif;
+    position: absolute;
+    top: -80px;
+    right: -30px;
+    width: 230px;
+    color: white;
+}
+
+.markmexico {
+    position: absolute;
+    left: 580px;
+    top: 130px;
+}
+
+.showmexico {
+    display: none;
+    position: absolute;
+}
+
+.showmexicofix {
+    display: block;
+    position: absolute;
+}
+
+.markmexico:hover .showmexico{
+    display: block;
+}
+
+/*                  end style for mexico addres on map                   */
+
+
+/*                  style for us box                   */
+
+.us {
+    background-image: url("./us.png");
+    background-position: 0px 25px;
+    width: 250px;
+    height: 220px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    transition: 0.5s;
+}
+
+.us:hover {
+    background-size: 500%;
+    background-position: -980px -80px; 
+}
+
+.us:hover .nameNY {
+    opacity: 1;
+}
+
+.nameNY {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    background-color: #408CCC;
+    color: white;
+    font-family: Oswald, sans-serif;
+    padding: 0px 10px;
+}
+
+/*                  end style for us box                   */
+
+/*                  style for canada addres on map                   */
+
+.textus {
+    position: absolute;
+    top: -30px;
+    left: 20px;
+    width: 150px;
+    height: 130px;
+    background-color: #408CCC;
+    opacity: 0.8;  
+}
+
+.addresus {
+    font-family: Oswald, sans-serif;
+    position: absolute;
+    top: -30px;
+    left: 30px;
+    width: 230px;
+    color: white;
+}
+
+.markus {
+    position: absolute;
+    left: 620px;
+    top: 370px;
+}
+
+.showus {
+    display: none;
+    position: absolute;
+}
+
+.showusfix {
+    display: block;
+    position: absolute;
+}
+
+.markus:hover .showus{
+    display: block;
+}
+
+/*                  end style for canada addres on map                   */
+
+/*                  style for canada box                   */
+
+.canada {
+    background-image: url("./canada.png");
+    background-position: 0px 20px;
+    width: 250px;
+    height: 220px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    transition: 0.5s;
+}
+
+.canada:hover {
+    background-size: 200%;
+    background-position: -250px -150px; 
+}
+
+.canada:hover .nameQc {
+    opacity: 1;
+}
+
+.nameQc {
+    position: absolute;
+    top: 220px;
+    right: 25px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    background-color: #408CCC;
+    color: white;
+    font-family: Oswald, sans-serif;
+    padding: 0px 10px;
+}
+
+/*                  end style for canada box                   */
+
+/*                  style for canada addres on map                   */
+
+.textcanada {
+    position: absolute;
+    top: -150px;
+    right: 20px;
+    width: 120px;
+    height: 130px;
+    background-color: #408CCC;
+    opacity: 0.8;  
+}
+
+.addrescanada {
+    font-family: Oswald, sans-serif;
+    position: absolute;
+    top: -150px;
+    right: -100px;
+    width: 230px;
+    color: white;
+}
+
+.markcanada {
+    position: absolute;
+    right: 420px;
+    top: 250px;
+}
+
+.showcanada {
+    display: none;
+    position: absolute;
+}
+
+.showcanadafix {
+    display: block;
+    position: absolute;
+}
+
+.markcanada:hover .showcanada{
+    display: block;
+}
+
+/*                  end style for canada addres on map                   */
+
+/*                  style for canada NS box                   */
+
+.canadaNS {
+    background-image: url("./canada.png");
+    background-position: 0px 20px;
+    width: 250px;
+    height: 220px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    transition: 0.5s;
+}
+
+.canadaNS:hover {
+    background-size: 500%;
+    background-position: -1000px -630px; 
+}
+
+.canadaNS:hover .nameNS {
+    opacity: 1;
+}
+
+.nameNS {
+    position: absolute;
+    top: 220px;
+    right: 30px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    background-color: #408CCC;
+    color: white;
+    font-family: Oswald, sans-serif;
+    padding: 0px 10px;
+}
+
+/*                  end style for canada NS box                   */
+
+/*                  style for canada addres on map                   */
+
+.textcanadaNS {
+    position: absolute;
+    top: 10px;
+    left: -50px;
+    width: 130px;
+    height: 130px;
+    background-color: #408CCC;
+    opacity: 0.8;  
+}
+
+.addrescanadaNS {
+    font-family: Oswald, sans-serif;
+    position: absolute;
+    top: 10px;
+    left: -40px;
+    width: 230px;
+    color: white;
+}
+
+.markcanadaNS {
+    position: absolute;
+    right: 380px;
+    top: 15px;
+}
+
+.showcanadaNS {
+    display: none;
+    position: absolute;
+}
+
+.showcanadaNSfix {
+    display: block;
+    position: absolute;
+}
+
+.markcanadaNS:hover .showcanadaNS{
+    display: block;
+}
+
+/*                  end style for canada addres on map                   */
+
+
+/*                  end map style                   */
+
+.footer {
+    display: flex;
+    justify-content: left;
+    width: 80%;
+    height: 50px;
+    border-top: solid;
+    border-bottom: solid;
+    border-width: 1px;
+}
+
+.callus {
+    font-family: Oswald, sans-serif;
+    font-size: 1.3em;
+    padding: 0px 10px;
+}
+
+.brandbox {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    font-family: Oswald, sans-serif;
+    font-size: 2em;
+}
+
+.timeposition {
+    font-size: 0.8em;
+    color: gray;
+}
+
+.starsComments {
+    font-size: 1.5em;
+    color: #fdc91b;
+}
+
+.servicesbutton {
+    position: absolute;
+    top: 330px;
+    right: 30px;
+    width: 80px;
+    height: 25px;
+    color: white;
+    border: solid 2px; 
+    font-family: Oswald, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.progress {
+    position: absolute;
+    height: 15px;
+    opacity: 0.4;
+    background-color: #408CCC;
+    display: flex;
+    align-items: center;
+}
