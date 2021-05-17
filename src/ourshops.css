@@ -1,0 +1,18 @@
+.shopimage {
+    width: 400px;
+    height: 200px;
+    background-size: 400px auto;
+    margin: 20px 20px 0px 20px; 
+}
+
+.shopquebec {background-image: url("./shopquebec.jpg");}
+.shophalifax {background-image: url("./shophalifax.jpg");}
+.shopusa {background-image: url("./shopusa.jpg");}
+.shopmex {background-image: url("./shopmex.jpg");}
+
+.ourshopstext {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 20px 20px 0px 0px; 
+}

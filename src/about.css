@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald|Noto+Sans");
+
+.aboutpanel {
+    width: 1000px;
+    height: 500px;
+    background-image: url("./about.jpg");
+    background-size: 1000px auto;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.aboutbox {
+    position: absolute;
+    width: 1000px;
+    height: 200px;
+    background-color: #408CCC;
+    opacity: 0.3;
+}
+
+.abouttext {
+    position: absolute;
+    width: 800px;
+    height: 200px;
+    left: 100px;
+    top: 50px;
+    font-family: Oswald, sans-serif;
+    font-size: 1.2em;
+}

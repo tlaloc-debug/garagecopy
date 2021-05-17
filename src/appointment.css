@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald|Noto+Sans");
+
+.appointmentpanel {
+    width: 1000px;
+    height: 500px;
+    position: relative;
+    background-color: white;
+    font-family: Oswald, sans-serif;
+}
+
+.appointmentinput {
+    display: flex;
+    justify-content: center;
+}
+
+.appointmentcalendar {
+    width: 400px;
+}
+
+.appointmenttime {
+    width: 200px;
+}
+
+.buttontime {
+    width: 100px;
+    text-align: center;
+    background-color: #408CCC;
+    border-radius: 5px;
+    margin: 5px 0px;
+    opacity: 0.8;
+}

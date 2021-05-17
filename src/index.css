@@ -12,6 +12,11 @@
     align-items: center;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+}
+
 /*                   end common style                   */
 
 /*                  main style                   */
@@ -20,6 +25,7 @@
     position: absolute; 
     width: 100%;
     height: 600px;
+    z-index: -1;
 }
 
 .backphoto{
@@ -1028,4 +1034,10 @@ ul {
     background-color: #408CCC;
     display: flex;
     align-items: center;
+}
+
+.contactpanel {
+    font-family: Oswald, sans-serif;
+    width: 1000px;
+    background-color: white;
 }
