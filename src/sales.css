@@ -1,0 +1,24 @@
+.salespanel {
+    width: 1000px;
+    height: 420px;
+    position: relative;
+    background-color: white;
+    font-family: Oswald, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.gear {
+    width: 200px;
+    height: 200px;
+    background-image: url("./gear.png");
+    background-size: 200px auto;
+    background-repeat: no-repeat;
+    animation: rotate 10s linear infinite;
+    margin-top: 80px;
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}

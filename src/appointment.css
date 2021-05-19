@@ -2,7 +2,6 @@
 
 .appointmentpanel {
     width: 1000px;
-    height: 500px;
     position: relative;
     background-color: white;
     font-family: Oswald, sans-serif;
@@ -15,6 +14,7 @@
 
 .appointmentcalendar {
     width: 400px;
+    height: 400px;
 }
 
 .appointmenttime {
@@ -22,10 +22,27 @@
 }
 
 .buttontime {
-    width: 100px;
     text-align: center;
     background-color: #408CCC;
     border-radius: 5px;
     margin: 5px 0px;
     opacity: 0.8;
+    cursor: pointer;
+}
+
+.buttontimenot {
+    width: 80px;
+}
+
+.buttontimenot:hover {
+    width: 100px;
+    transition: width 0.2s;
+}
+
+.buttontimeselected {
+    width: 100px;
+}
+
+.inputtext {
+    width: 150px;
 }

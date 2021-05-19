@@ -12,6 +12,7 @@ import Ourshops from "./ourshops.js";
 import Services from "./services.js"
 import About from "./about.js";
 import Appointment from "./appointment.js";
+import Sales from "./sales.js";
 
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
@@ -143,7 +144,7 @@ function App() {
 }
 
 const House = () => (<Home />);
-const Salesfunction = () => (<h1>Sales</h1>);
+const Salesfunction = () => (<Sales />);
 const Contactfunction = () => (<Contact />);
 const Ourshopsfunction = () => (<Ourshops />);
 const Servicesfunction = () => (<Services />);
