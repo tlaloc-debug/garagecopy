@@ -1,21 +1,65 @@
 .salespanel {
     width: 1000px;
-    height: 420px;
     position: relative;
     background-color: white;
     font-family: Oswald, sans-serif;
-    display: flex;
-    justify-content: center;
 }
 
-.gear {
+.products {
+    position: relative;
     width: 200px;
-    height: 200px;
-    background-image: url("./gear.png");
+    height: 300px;
+    background-image: url("./tire.png");
     background-size: 200px auto;
     background-repeat: no-repeat;
-    animation: rotate 10s linear infinite;
-    margin-top: 80px;
+}
+
+.producttext {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
+.products:hover {
+    background-size: 0px 0px;
+}
+
+.products:hover .producttext {
+    transition: bottom 0.5s;
+    bottom: 100%;
+}
+
+.products:hover .tiresizes{
+    opacity: 1;
+}
+
+.tiresizes {
+    opacity: 0;
+    padding-top: 20px;
+}
+
+.articlesize {
+    cursor: pointer;
+    text-align: center;
+    height: 25px;
+    overflow: hidden;
+}
+
+.articlesize:hover {
+    border: solid 1px gray;
+    border-radius: 5px;
+}
+
+.inventory {
+    pointer-events: none;
+    display: flex;
+    justify-content: space-around;
+    color: gray;
+    padding: 10px 0px;
+}
+
+.storelink {
+    background-color: #408CCC;
 }
 
 @keyframes rotate {
