@@ -21,6 +21,7 @@ function Appointment() {
 
     const [response1, setresponse1] = useState ("");
     const [response2, setresponse2] = useState ("");
+    const [response3, setresponse3] = useState ("");
     const [answer, setanswer] = useState ([]);
 
     const selecttime = (timechose) => {
@@ -39,7 +40,9 @@ function Appointment() {
             appointmentname: name,
             appointmentemail: email,
             appointmentphone: phone
-        })
+        }).then((response3)=>{
+            console.log(response3.data);
+        }) 
     }
 
     const selectdate = (e) => {
