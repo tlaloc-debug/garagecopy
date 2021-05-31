@@ -7,7 +7,7 @@ function Sales() {
     const [collect, setcollect] = useState ([])
 
     const showproducts = () => {
-        Axios.get("http://localhost:3001/products").then((response) => {
+        Axios.get("https://shopifyconnect.herokuapp.com/products").then((response) => {
             setcollect(response.data.data.collections.edges)
         }); 
     }

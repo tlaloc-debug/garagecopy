@@ -2,12 +2,14 @@ import React, {useState} from "react";
 import Calendar from 'react-calendar';
 import "./appointment.css";
 import 'react-calendar/dist/Calendar.css';
+import axios from "axios";
+import { post } from "jquery";
 
 function Appointment() {
 
     const [dateState, setDateState] = useState(new Date());
     const [location, setlocation] = useState("");
-    let times=["9:00", "11:00", "13:00", "15:00", "17:00"];
+    const [times, settimes] = useState ([])
     const [timeselected, settimeselected] = useState ("");
     const [book, setbook] = useState ("");
     const [name, setname] = useState ("");
@@ -15,6 +17,11 @@ function Appointment() {
     const [email, setemail] = useState ("");
     const [phone, setphone] = useState ("");
     const [reason, setreason] = useState ("");
+    let newarray=["9:00", "11:00", "13:00", "15:00"];
+
+    const [response1, setresponse1] = useState ("");
+    const [response2, setresponse2] = useState ("");
+    const [answer, setanswer] = useState ([]);
 
     const selecttime = (timechose) => {
         times.map((Times, index)=>{
@@ -24,11 +31,40 @@ function Appointment() {
        settimeselected(times[timechose]);
     }
 
-    const bookappointment = () => {
-        if (location==="") {alert("You must select a location.")}
-        else  if (timeselected==="") {alert("You must pick a time.")}
-        else  if (name==="") {alert("You must fill your contact information.")}
-        else setbook("Thank you " + name + ". You have succesfully booked an appointment on " + String(dateState).substr(0,15) + " at " + timeselected + " hrs. at " + location + ".")
+    const BOOKappointment = () => {
+        axios.post("https://shopifyconnect.herokuapp.com/bookappointment", {
+            appointmentdate: dateState,
+            appointmenttime: timeselected,
+            appointmentlocation: location,
+            appointmentname: name,
+            appointmentemail: email,
+            appointmentphone: phone
+        })
+    }
+
+    const selectdate = (e) => {
+       
+       
+        setDateState(e);
+        console.log(dateState)
+        axios.post("https://shopifyconnect.herokuapp.com/searchdate", {
+            searchdate: e,
+        }).then((response1)=>{console.log(response1)
+        if (response1.data=="done"){
+            axios.get("https://shopifyconnect.herokuapp.com/resultdate").then((response2)=>{
+                    setanswer(response2.data);
+                }) 
+        }
+        
+    })
+    answer.map((horas)=>{
+        if(horas.time==="9:00") {newarray[0]=""}
+        if(horas.time==="11:00") {newarray[1]=""}
+        if(horas.time==="13:00") {newarray[2]=""}
+        if(horas.time==="15:00") {newarray[3]=""}
+    })
+    settimes(newarray)
+    console.log(times)
     }
 
     return (
@@ -48,7 +84,7 @@ function Appointment() {
                 <div className={"appointmentinput"}>
                     <div className={"appointmentcalendar"}>
                         <div>Select A Date</div><br />
-                        <Calendar onChange={(e)=>{setDateState(e)}} value={dateState} />
+                        <Calendar onChange={(e)=>{selectdate(e)}} value={dateState} />
                     </div>
                     <div className={"appointmenttime"}>
                         <div>Select A Time</div><br />
@@ -83,7 +119,7 @@ function Appointment() {
                             </tr>
                         </table>
                         <br />
-                        <button onClick={bookappointment}>Book Now</button>
+                        <button onClick={BOOKappointment}>Book Now</button>
                         
                     </div>
                 </div>
