@@ -19,7 +19,8 @@ function Sales() {
     return(
         <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
             <div className={"salespanel"}>
-                <button onClick={showproducts}>Show All Products</button>
+                <button onClick={showproducts}>Show All Products</button> <br />
+                <h2>If Shopify ask you a pasword: autsep</h2>
                 <div style={{display: "flex", justifyContent: "space-around", margin: "30px 0px"}}>
                    {collect.slice(0,3).map((collections, index)=>{
                        return (
