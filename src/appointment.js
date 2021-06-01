@@ -19,11 +19,6 @@ function Appointment() {
     const [reason, setreason] = useState ("");
     let newarray=["9:00", "11:00", "13:00", "15:00"];
 
-    const [response1, setresponse1] = useState ("");
-    const [response2, setresponse2] = useState ("");
-    const [response3, setresponse3] = useState ("");
-    const [answer, setanswer] = useState ([]);
-
     const selecttime = (timechose) => {
         times.map((Times, index)=>{
             document.getElementById(index).className="buttontime buttontimenot";
@@ -46,28 +41,23 @@ function Appointment() {
     }
 
     const selectdate = (e) => {
-       
-       
-        setDateState(e);
-        console.log(dateState)
-        axios.post("https://shopifyconnect.herokuapp.com/searchdate", {
-            searchdate: e,
-        }).then((response1)=>{console.log(response1)
-        if (response1.data=="done"){
-            axios.get("https://shopifyconnect.herokuapp.com/resultdate").then((response2)=>{
-                    setanswer(response2.data);
-                }) 
-        }
         
-    })
-    answer.map((horas)=>{
-        if(horas.time==="9:00") {newarray[0]=""}
-        if(horas.time==="11:00") {newarray[1]=""}
-        if(horas.time==="13:00") {newarray[2]=""}
-        if(horas.time==="15:00") {newarray[3]=""}
-    })
-    settimes(newarray)
-    console.log(times)
+            setDateState(e);
+            axios.post("https://shopifyconnect.herokuapp.com/searchdate", {
+                searchdate: e,
+            }).then((response1)=>{console.log(response1)
+            if (response1.data=="done"){
+                axios.get("https://shopifyconnect.herokuapp.com/resultdate").then((response2)=>{
+                        response2.data.map((horas)=>{
+                            if(horas.time==="9:00") {newarray[0]=""}
+                            if(horas.time==="11:00") {newarray[1]=""}
+                            if(horas.time==="13:00") {newarray[2]=""}
+                            if(horas.time==="15:00") {newarray[3]=""}
+                        })
+                        settimes(newarray);
+                    })
+            }
+        })    
     }
 
     return (
@@ -87,7 +77,7 @@ function Appointment() {
                 <div className={"appointmentinput"}>
                     <div className={"appointmentcalendar"}>
                         <div>Select A Date</div><br />
-                        <Calendar onChange={(e)=>{selectdate(e)}} value={dateState} />
+                        <Calendar onChange={(e)=>{selectdate(e, resp => {console.log(resp)})}} value={dateState} />
                     </div>
                     <div className={"appointmenttime"}>
                         <div>Select A Time</div><br />
