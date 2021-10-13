@@ -13,12 +13,12 @@
     background-repeat: no-repeat;
 }
 
-.paint {background-image: url("./paint.jpg");}
-.anti {background-image: url("./antirouille.jpg");}
-.alineacion {background-image: url("./alineacion.jpg");}
-.brake {background-image: url("./brake.jpg");}
-.suspension {background-image: url("./suspension.jpg");}
-.mechanic {background-image: url("./mechanic.jpg");}
+.paint {background-image: url("./images/paint.jpg");}
+.anti {background-image: url("./images/antirouille.jpg");}
+.alineacion {background-image: url("./images/alineacion.jpg");}
+.brake {background-image: url("./images/brake.jpg");}
+.suspension {background-image: url("./images/suspension.jpg");}
+.mechanic {background-image: url("./images/mechanic.jpg");}
 
 .servicestextbox {
     width: 400px;

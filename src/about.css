@@ -3,7 +3,7 @@
 .aboutpanel {
     width: 1000px;
     height: 500px;
-    background-image: url("./about.jpg");
+    background-image: url("./images/about.jpg");
     background-size: 1000px auto;
     background-repeat: no-repeat;
     position: relative;

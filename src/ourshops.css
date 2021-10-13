@@ -5,10 +5,10 @@
     margin: 20px 20px 0px 20px; 
 }
 
-.shopquebec {background-image: url("./shopquebec.jpg");}
-.shophalifax {background-image: url("./shophalifax.jpg");}
-.shopusa {background-image: url("./shopusa.jpg");}
-.shopmex {background-image: url("./shopmex.jpg");}
+.shopquebec {background-image: url("./images/shopquebec.jpg");}
+.shophalifax {background-image: url("./images/shophalifax.jpg");}
+.shopusa {background-image: url("./images/shopusa.jpg");}
+.shopmex {background-image: url("./images/shopmex.jpg");}
 
 .ourshopstext {
     display: flex;
