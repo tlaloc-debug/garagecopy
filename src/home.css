@@ -1,0 +1,224 @@
+.lenguaje {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    width: 200px;
+    height: 200px;
+}
+
+.lenguaje-container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+}
+
+.lenguajeback {
+    background-image: url("./images/front.jpg");
+    background-position: 0px 33px;
+    background-repeat: no-repeat;
+    background-size: 100%;    
+}
+
+.lenguajebox {
+    background-color: #304169;
+    opacity: 0.4;      
+}
+
+.knowingback {
+    background-image: url("./images/motor.jpg");
+    background-position: 0px 30px;
+    background-repeat: no-repeat;
+    background-size: 100%;     
+}
+
+.knowingbox {
+    background-color: #434e4a;
+    opacity: 0.4;   
+}
+
+.whatcouldback {
+    background-image: url("./images/problems.jpg");
+    background-position: 0px 32px;
+    background-repeat: no-repeat;
+    background-size: 100%;     
+}
+
+.whatcouldbox {
+    background-color: #3464b9;
+    opacity: 0.4;   
+}
+
+.movieback {
+    background-image: url("./images/movie.png");
+    background-position: 0px 22px;
+    background-repeat: no-repeat;
+    background-size: 100%;     
+}
+
+.moviebox {
+    background-color: black;
+    opacity: 0.4; 
+}
+
+.pieces {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    width: 180px;
+    height: 200px;
+    background-image: url("./images/pieces1.jpg");
+    background-position: 0px 22px;
+    background-repeat: no-repeat;
+    background-size: 100%;  
+}
+
+.titleboxes {
+    position: absolute;
+    font-family: Oswald, sans-serif;
+    font-size: 1.6em;
+    padding: 0px 10px; 
+    color: white;
+    padding-top: 30px;
+}
+
+.textboxes {
+    position: absolute;
+    top: 100px;
+    font-family: Oswald, sans-serif;
+    font-size: 1.3em;
+    padding: 0px 10px; 
+    color: white;
+    font-weight: bold;
+}
+
+.littleboxes-container {
+    width: 500px;
+}
+
+.average {
+    width: 100%;
+    height: 150px;
+    margin-top: 30px;
+}
+
+.rating_bars {
+    width: 40%;
+    margin-left: 20px;
+}
+
+.rating_progress_container {
+    position: relative;
+    width: 200px;
+    height: 20px;
+    border: solid 1px;
+    border-radius: 5px;
+    margin: 2px;
+}
+
+.little_stars {
+    position: absolute;
+    top: -6px;
+    left: 2px;
+}
+
+.showpercentage {
+    height: 10px;
+}
+
+.reviews {
+    width: 100%;
+    height: 300px;
+    overflow: scroll;
+}
+
+.person {
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+
+.main-face {
+    width: 70px;
+    height: 70px;
+    margin: 15px 0px;
+    margin-right: 15px;
+    border-radius: 50px;
+    border: solid 2px #408CCC;
+}
+
+.face1 {
+    background-image: url("./images/maria.jpg");
+    background-repeat: no-repeat;
+    background-position: -15px 0px;
+    background-size: 150%;
+}
+
+.face2 {
+    background-image: url("./images/juan.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.face3 {
+    background-image: url("./images/laura.jpg");
+    background-repeat: no-repeat;
+    background-position: -15px 0px;
+    background-size: 150%;
+}
+
+.face4 {
+    background-image: url("./images/panfilo.jpg");
+    background-repeat: no-repeat;
+    background-position: -5px 0px;
+    background-size: 120%;
+}
+
+.face5 {
+    background-image: url("./images/sarah.jpg");
+    background-repeat: no-repeat;
+    background-position: -5px 0px;
+    background-size: 120%;
+}
+
+@media only screen and (max-width: 991px) {
+    .lenguaje   {
+        width: 310px;
+        height: 100px;
+    }
+
+    .lenguaje-container {
+        width: 150px;
+        height: 100px;   
+    }
+
+    .titleboxes, .textboxes {
+        top: 0;
+        width: 150px;
+        padding-top: 0;
+    }
+
+    .textboxes {
+        right: 0;
+        width: 160px;
+    }
+
+    .lenguajebox,  .knowingbox, .whatcouldbox {width: 300px;}
+    .lenguajeback, .knowingback, .whatcouldback {background-position: 0 0;}
+
+    #youtube-video {
+        height: 150px;
+        width: 200px;}
+
+    #youtube-video > .lenguaje-container {
+        width: 200px;
+        height: 160px;
+    } 
+
+    #youtube-video, #youtube-video > .lenguaje-container, .pieces {margin-left: 30px;} 
+
+    .movieback, .pieces {background-position: 0 0;}
+    .movieback {background-size: 100% 100%;}
+    .littleboxes-container {width: 330px;}
+}

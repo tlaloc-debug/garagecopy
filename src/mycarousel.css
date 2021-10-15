@@ -1,0 +1,187 @@
+.clasicbox {
+    width: 100%;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    height: 100%;
+    background-color: #408CCC;
+    opacity: 0.8;  
+}
+
+.services {
+    position: absolute;
+    right: 0px;
+    width: 280px;
+    height: 100%;
+    font-family: Oswald, sans-serif;
+    color: white;
+    padding-top: 20px;
+}
+
+.servicesbutton {
+    position: absolute;
+    top: 320px;
+    right: 30px;
+    width: 80px;
+    height: 30px;
+    color: white;
+    border: solid 2px; 
+    font-family: Oswald, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-title-element {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+}
+
+@keyframes appear {
+    from {opacity: 0;}
+    to {opacity: 0.8;}
+  }
+
+.clasic1 {
+    position: relative;
+    background-color: white; 
+    width: 1000px;
+    height: 100%;
+}
+
+.car1 {
+    position: absolute;
+    width: 520px;
+    height: 300px;
+    background-image: url("./images/car1.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.car2 {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 470px;
+    height: 250px;
+    background-image: url("./images/car2.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.car3 {
+    position: absolute;
+    bottom: 0px;
+    left: 320px;
+    width: 200px;
+    height: 180px;
+    background-image: url("./images/car3.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.car4 {
+    position: absolute;
+    bottom: 0px;
+    width: 310px;
+    height: 180px;
+    background-image: url("./images/car4.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.car5 {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 237px;
+    height: 280px;
+    background-image: url("./images/car5.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.car6 {
+    position: absolute;
+    top: 0px;
+    left: 530px;
+    width: 225px;
+    height: 280px;
+    background-image: url("./images/car6.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.clasic2 {
+    position: relative;
+    background-image: url("./images/client.png");
+    width: 1000px;
+    height: 100%;
+}
+
+.clasic3 {
+    position: relative;
+    background-image: url("./images/services.png");
+    width: 1000px;
+    height: 100%;
+}
+
+.clasic4 {
+    position: relative;
+    background-image: url("./images/tires.png");
+    width: 1000px;
+    height: 100%;
+}
+
+@media only screen and (max-width: 991px) {
+   
+    .box {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 180px;
+        background-color: #408CCC;
+        opacity: 0.8;  
+    }
+
+    .services {
+        position: absolute;
+        bottom: 0;
+        width: 95%;
+        height: 180px;
+        font-family: Oswald, sans-serif;
+        color: white;
+        padding-top: 20px;
+    }
+
+    .clasicbox {
+        width: 100%;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .servicesbutton {
+        top: 30px;
+        right: 20px;
+        width: 80px;
+    }
+
+    .carousel-title-element {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    .car1 {
+        height: 500px;
+        background-size: auto 320px;
+        background-position: -180px 0;
+    }
+
+    .car2, .car3, .car4, .car5, .car6 {display: none;}
+}

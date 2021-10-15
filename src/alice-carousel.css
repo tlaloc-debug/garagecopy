@@ -146,7 +146,7 @@
 
 .alice-carousel__dots {
   position: absolute;
-  top: 350px;
+  top: 380px;
   right: 300px;
   margin: 30px 3px 5px;
   padding: 0;
@@ -155,8 +155,8 @@
   .alice-carousel__dots > li {
     display: inline-block; }
   .alice-carousel__dots-item:not(.__custom) {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     cursor: pointer;
     border: solid 1px;
     border-radius: 50%;
@@ -179,3 +179,11 @@
   .alice-carousel__slide-info-item {
     vertical-align: middle;
     line-height: 0; }
+
+@media only screen and (max-width: 991px) {
+  .alice-carousel__dots {
+    position: absolute;
+    top: 450px;
+    right: 30px;
+    }
+}
