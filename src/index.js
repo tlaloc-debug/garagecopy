@@ -1,10 +1,7 @@
 import React, {useState, useEffect} from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import { Facebook } from 'react-bootstrap-icons';
-import { Youtube } from 'react-bootstrap-icons';
-import { Twitter } from 'react-bootstrap-icons';
-import { Instagram } from 'react-bootstrap-icons';
+import { Facebook, Youtube, Twitter, Instagram, List, X } from 'react-bootstrap-icons';
 import Home from "./home.js";
 import Contact from "./mycontact.js";
 import Ourshops from "./ourshops.js";
@@ -19,19 +16,23 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 function App() {
 
-    
+    const [stylemobileMenu, setstylemobileMenu] = useState(false);
+
+    const showMobileMenu = () => {
+        setstylemobileMenu(!stylemobileMenu)
+    }
 
     return (
         <Router>
         
-        <div>
+        <div >
             <div className={"backmain"}>
                 <div className={"backphoto"}>
 
                 </div>
             </div>
                
-            <div className={"align_horizontal"}>
+            <div className={"align_horizontal"} id={"top"}>
                 <div className={"bartopnav"}>
 
                 </div>
@@ -127,9 +128,9 @@ function App() {
                 <div className={"barmenu"}>
 
                 </div>
-                <div className={"bartopnavcontainer"}>
+                <div className={"bartopnavcontainer"} >
                     <div className={"menulist"}>
-                        <div className={"align_vertical"}>
+                        <div className={"align_vertical"} id={"bar-menu-desktop"}>
                             <ul>
                                 <li className={"menu"}><Link to="/">HOME</Link></li>
                                 <li className={"menu"}><Link to="/salesmenu">SALES</Link></li>
@@ -138,6 +139,15 @@ function App() {
                                 <li className={"menu"}><Link to="/servicesmenu">SERVICES</Link></li>
                                 <li className={"menu"}><Link to="/aboutmenu">ABOUT</Link></li>
                             </ul>
+                        </div>
+                        <div id={"bar-menu-mobile"}>
+                            <div style={{width: "100%", display: "flex", justifyContent: "space-between"}}> 
+                                <List size={30} onClick={showMobileMenu}/>
+                                <div style={{display: "flex"}} className={"menu"}>
+                                    <div >QC</div>
+                                    <div style={{paddingLeft: "10px"}}>514-717-6664</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -177,7 +187,23 @@ function App() {
                     </div>
                 </div>
             </div>
-
+            <div className={stylemobileMenu ? "show-mobile-main-menu mobile-main-menu" : "mobile-main-menu"} >
+                <div className={"mobile-menu-bar"} >
+                    <div style={{position: "relative"}}>
+                        <div className={"close-menu"}>
+                            <X color={"white"} size={40} onClick={showMobileMenu}/>
+                        </div>
+                    </div>
+                </div>
+                <ul id={"mobile-menu-list"}>
+                    <li ><Link onClick={showMobileMenu} to="/"><div style={{display: "inline-block", width: "100%"}}>HOME</div></Link></li>
+                    <li ><Link onClick={showMobileMenu} to="/salesmenu"><div style={{display: "inline-block", width: "100%"}}>SALES</div></Link></li>
+                    <li ><Link onClick={showMobileMenu} to="/shopmenu"><div style={{display: "inline-block", width: "100%"}}>OUR SHOPS</div></Link></li>
+                    <li ><Link onClick={showMobileMenu} to="/appointmentmenu"><div style={{display: "inline-block", width: "100%"}}>APPOINTMENT</div></Link></li>
+                    <li ><Link onClick={showMobileMenu} to="/servicesmenu"><div style={{display: "inline-block", width: "100%"}}>SERVICES</div></Link></li>
+                    <li ><Link onClick={showMobileMenu} to="/aboutmenu"><div style={{display: "inline-block", width: "100%"}}>ABOUT</div></Link></li>
+                </ul>
+            </div>
         </div>
         </Router>
     )
