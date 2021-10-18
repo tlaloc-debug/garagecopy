@@ -1,3 +1,17 @@
-input, textarea {
-    width: 300px;
+#mycontactinput > input, #mycontactinput > textarea {
+    width: 250px;
+}
+
+#mycontactinput > div > button {
+    height: 30px;
+    background-color: #408CCC;
+    color: white;
+    border: none;
+}
+
+@media only screen and (max-width: 991px) {
+
+    input, textarea {
+        width: 100%;
+    }
 }

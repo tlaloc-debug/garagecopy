@@ -21,11 +21,17 @@
 .mechanic {background-image: url("./images/mechanic.jpg");}
 
 .servicestextbox {
-    width: 400px;
+    
     padding: 0px 50px;
     color: gray;
 }
 
-.servicestext {
-    width: 400px;
+@media only screen and (max-width: 991px) {
+    .servicestextbox {
+        padding: 0px;
+    }
+    .services-title {
+        width: 100%;
+        text-align: center;
+    }
 }

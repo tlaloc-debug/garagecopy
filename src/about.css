@@ -12,17 +12,33 @@
 .aboutbox {
     position: absolute;
     width: 1000px;
-    height: 200px;
-    background-color: #408CCC;
-    opacity: 0.3;
+    height: 500px;
+    /* background-color: #408CCC;*/
+    display: flex;
+    justify-content: center;
 }
 
 .abouttext {
-    position: absolute;
-    width: 800px;
-    height: 200px;
-    left: 100px;
-    top: 50px;
+    width: 80%;
+    padding-top: 50px;
     font-family: Oswald, sans-serif;
     font-size: 1.2em;
+}
+
+@media only screen and (max-width: 991px) {
+
+    .aboutbox {
+        width: 100%;
+    }
+
+    .abouttext {
+        width: 90%;
+        padding-top: 20px;
+    }
+    .aboutpanel {
+        height: 550px;
+    }
+    .aboutpanel {
+        background-position: -500px 0px;
+    }
 }

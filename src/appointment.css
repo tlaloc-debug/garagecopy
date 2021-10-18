@@ -7,14 +7,15 @@
     font-family: Oswald, sans-serif;
 }
 
-.appointmentinput {
+.appointment-radio {
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.appointmentcalendar {
-    width: 400px;
-    height: 400px;
+.appointmentinput {
+    display: flex;
+    justify-content: center;
 }
 
 .appointmenttime {
@@ -44,5 +45,27 @@
 }
 
 .inputtext {
-    width: 150px;
+    width: 250px;
+}
+
+#bocknow-button {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+#bocknow-button > button {
+    color: white;
+    background-color: #408CCC;
+    border: none;
+}
+
+@media only screen and (max-width: 991px) {
+    .appointment-radio {display: block;} 
+    .inputtext {
+        width: 90%;
+    }
+    #bocknow-button {
+        width: 100%;
+    }
 }

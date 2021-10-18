@@ -14,5 +14,15 @@
     display: flex;
     align-items: center;
     height: 100%;
-    margin: 20px 20px 0px 0px; 
+    width: 100%;
+}
+
+@media only screen and (max-width: 991px) {
+    .shopimage, .ourshopstext {
+        width: auto;
+    }
+    .ourshopstitle {
+        width: 100%;
+        text-align: center;
+    }
 }

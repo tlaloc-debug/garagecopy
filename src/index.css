@@ -11,6 +11,10 @@
     align-items: center;
 }
 
+.notshown {
+    display: none;
+}
+
 .mobile-main-menu {
     position: fixed;
     height: 100%;
@@ -29,9 +33,11 @@
     display: none;
 }
 
-li > a, li > a:hover, .icon {
+li > a, li > a:hover, .icon, li > select {
     color: white;
     text-decoration: none;
+    border: none;
+    background-color: transparent;
 }
 
 ul {

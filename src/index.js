@@ -9,6 +9,10 @@ import Services from "./services.js";
 import About from "./about.js";
 import Appointment from "./appointment.js";
 import Sales from "./sales.js";
+import MyLogin from "./mylogin";
+import MyRegister from "./myregister";
+import MyRegisterSucces from "./registersucces";
+import MyLoginSucces from "./loginsucces";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -16,12 +20,15 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 function App() {
 
+    const [sesionLogin, setsesionLogin] = useState(false);
+
+    const [language, setlanguage] = useState("en");
     const [stylemobileMenu, setstylemobileMenu] = useState(false);
 
     const showMobileMenu = () => {
         setstylemobileMenu(!stylemobileMenu)
     }
-
+    
     return (
         <Router>
         
@@ -41,21 +48,37 @@ function App() {
                         <Container>
                     
                             <Row xs="12" sm="12"  >
-                                <Col sm="3">
+                                <Col sm="4">
                                     <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
                                         <div className={"align_vertical"}>
                                             <div className={"canflag"}></div>
-                                                Canada
+                                            <ul>
+                                                <li className={sesionLogin ? "notshown" : "topinbox"} style={{border: "none"}}><Link to="/loginmenu">Log In</Link></li>
+                                                <li className={sesionLogin ? "notshown" : "topinbox"} style={{border: "none"}}><Link to="/registermenu">Register</Link></li>
+                                                <li className={sesionLogin ? "topinbox" : "notshown"} style={{border: "none"}}><Link to="/loginsuccesmenu">Account</Link></li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </Col>
-                                <Col sm="6">
+                                <Col sm="5">
                                     <div className={"align_vertical"}>
                                         <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
                                             <ul>
                                                 <li className={"topinbox"}><Link to="/">Home</Link></li>
-                                                <li className={"topinbox"}><Link to="/contactmenu">Contact</Link></li>
-                                                <li className={"topinbox"} style={{borderRight: "solid white"}}>French</li>
+                                                <li className={"topinbox"}><Link to="/contactmenu">
+                                                    {language === "en" ? "Contact" : ""}
+                                                    {language === "fr" ? "Contact" : ""}
+                                                    {language === "sp" ? "Contacto" : ""}
+                                                    </Link></li>
+                                                <li className={"topinbox"} style={{borderRight: "solid white"}}>
+                                                    <select className={"language_select_desktop"}
+                                                        value={language}
+                                                        onChange={e => setlanguage(e.target.value)}>
+                                                        <option value="en">English</option>
+                                                        <option value="fr">French</option>
+                                                        <option value="sp">Spanish</option>
+                                                    </select>    
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -92,8 +115,12 @@ function App() {
 
                                 <div className={"mytitle"}> 
                                     <div >
-                                        <div className={"align_horizontal"} style={{fontSize: "2em"}}>"FixCar"</div>
-                                        <div className={"align_horizontal"} style={{fontSize: "1.5em"}}>BODY SHOP</div>
+                                        <div className={"align_horizontal"} style={{fontSize: "2em"}}>FixCar</div>
+                                        <div className={"align_horizontal"} style={{fontSize: "1.5em"}}>
+                                            {language === "en" ? "BODY SHOP" : ""}
+                                            {language === "fr" ? "GARAGE" : ""}
+                                            {language === "sp" ? "TALLER" : ""}
+                                        </div>
                                     </div>
                                 </div>
                                 </div>
@@ -133,10 +160,26 @@ function App() {
                         <div className={"align_vertical"} id={"bar-menu-desktop"}>
                             <ul>
                                 <li className={"menu"}><Link to="/">HOME</Link></li>
-                                <li className={"menu"}><Link to="/salesmenu">SALES</Link></li>
-                                <li className={"menu"}><Link to="/shopmenu">OUR SHOPS</Link></li>
-                                <li className={"menu"}><Link to="/appointmentmenu">APPOINTMENT</Link></li>
-                                <li className={"menu"}><Link to="/servicesmenu">SERVICES</Link></li>
+                                <li className={"menu"}><Link to="/salesmenu">
+                                    {language === "en" ? "SALES" : ""}
+                                    {language === "fr" ? "VENTES" : ""}
+                                    {language === "sp" ? "VENTAS" : ""}
+                                    </Link></li>
+                                <li className={"menu"}><Link to="/shopmenu">
+                                    {language === "en" ? "SHOPS" : ""}
+                                    {language === "fr" ? "GARAGES" : ""}
+                                    {language === "sp" ? "TALLERES" : ""}
+                                    </Link></li>
+                                <li className={"menu"}><Link to="/appointmentmenu">
+                                    {language === "en" ? "APPOINTMENT" : ""}
+                                    {language === "fr" ? "RENDEZ-VOUS" : ""}
+                                    {language === "sp" ? "CITAS" : ""}
+                                    </Link></li>
+                                <li className={"menu"}><Link to="/servicesmenu">
+                                    {language === "en" ? "SERVICES" : ""}
+                                    {language === "fr" ? "SERVICES" : ""}
+                                    {language === "sp" ? "SERVICIOS" : ""}
+                                    </Link></li>
                                 <li className={"menu"}><Link to="/aboutmenu">ABOUT</Link></li>
                             </ul>
                         </div>
@@ -154,19 +197,27 @@ function App() {
             </div>
             
             <Switch>
-                <Route path="/" exact component={House} />
-                <Route path="/salesmenu" component={Salesfunction} />
-                <Route path="/contactmenu" component={Contactfunction} />
-                <Route path="/shopmenu" component={Ourshopsfunction} />
-                <Route path="/servicesmenu" component={Servicesfunction} />
-                <Route path="/aboutmenu" component={Aboutfuntion} />
-                <Route path="/appointmentmenu" component={Appointmentfuntion} />
+                <Route path="/" exact  ><Home sendlanguage={language}/></Route >
+                <Route path="/salesmenu"  ><Sales sendlanguage={language}/></Route >
+                <Route path="/contactmenu" ><Contact sendlanguage={language}/></Route >
+                <Route path="/shopmenu" ><Ourshops sendlanguage={language}/></Route >
+                <Route path="/servicesmenu"  ><Services sendlanguage={language}/></Route >
+                <Route path="/aboutmenu"  ><About sendlanguage={language}/></Route >
+                <Route path="/appointmentmenu"  ><Appointment sendlanguage={language}/></Route >
+                <Route path="/loginmenu"  ><MyLogin handleSetSesion={sesionLogin => {setsesionLogin(sesionLogin);}} sendlanguage={language}/></Route >
+                <Route path="/registermenu"  ><MyRegister sendlanguage={language}/></Route >
+                <Route path="/registersuccesmenu"  ><MyRegisterSucces sendlanguage={language}/></Route >
+                <Route path="/loginsuccesmenu"  ><MyLoginSucces handleSetSesion={sesionLogin => {setsesionLogin(sesionLogin);}} sendlanguage={language}/></Route >
             </Switch>
     
             <div className={"align_horizontal"}>
                 <div className={"footer"}>
                     <div className={"align_vertical"}>
-                        <div className={"callus"} style={{color: "#408CCC"}}>CALL US</div>
+                        <div className={"callus"} style={{color: "#408CCC"}}>
+                            {language === "en" ? "CALL US" : ""}
+                            {language === "fr" ? "APPELEZ-NOUS" : ""}
+                            {language === "sp" ? "LLAMANOS" : ""}
+                        </div>
                     </div>
                     <div className={"align_vertical"}>
                         <div className={"callus"} >CAN 514-717-6664</div>
@@ -175,7 +226,11 @@ function App() {
                         <div className={"callus"} style={{borderRight: "solid", borderWidth: "1px"}}>MEX 449-180-75-69</div>
                     </div>
                     <div className={"align_vertical"}>
-                        <div className={"callus"} style={{color: "#408CCC"}}>CONNECT WITH US</div>
+                        <div className={"callus"} style={{color: "#408CCC"}}>
+                            {language === "en" ? "CONNECT WITH US" : ""}
+                            {language === "fr" ? "CONNECTE-TOI AVEC NOUS" : ""}
+                            {language === "sp" ? "CONECTA CON NOSOTROS" : ""}
+                        </div>
                     </div>
                     <div className={"align_vertical"}>
                         <div className={"footer-bar-icons"} style={{color: "#408CCC"}}>
@@ -209,12 +264,5 @@ function App() {
     )
 }
 
-const House = () => (<Home />);
-const Salesfunction = () => (<Sales />);
-const Contactfunction = () => (<Contact />);
-const Ourshopsfunction = () => (<Ourshops />);
-const Servicesfunction = () => (<Services />);
-const Aboutfuntion = () => (<About />);
-const Appointmentfuntion = () => (<Appointment />);
 
 ReactDOM.render(<App />, document.getElementById("root"));
