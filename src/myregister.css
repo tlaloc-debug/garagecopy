@@ -1,0 +1,14 @@
+.registerpanel {
+    width: 1000px;
+    position: relative;
+    background-color: white;
+    font-family: Oswald, sans-serif;
+}
+
+.attention {
+    border: solid 2px red;
+}
+
+.green {
+    border: solid 2px green;
+}

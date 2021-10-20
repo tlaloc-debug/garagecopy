@@ -20,7 +20,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 function App() {
 
-    const [sesionLogin, setsesionLogin] = useState(false);
+    const initialsesionsave = JSON.parse(localStorage.getItem("savesesion")) || [""];
+    const [sesionLogin, setsesionLogin] = useState(initialsesionsave.sesionOn || false);
 
     const [language, setlanguage] = useState("en");
     const [stylemobileMenu, setstylemobileMenu] = useState(false);

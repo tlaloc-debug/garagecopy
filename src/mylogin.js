@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Link, Switch, Redirect} from "react-router-dom";
+import "./myregister.css";
 
 function MyLogin(props){
 
@@ -33,29 +34,31 @@ function MyLogin(props){
     }
 
     return (
-        <div>
-            <table >
-                <tr>
-                    <td><label htmlFor="">
-                        {props.sendlanguage === "en" ? "Username" : ""}
-                        {props.sendlanguage === "fr" ? "Mon nom" : ""}
-                        {props.sendlanguage === "sp" ? "Mi nombre" : ""}
-                    </label></td>
-                    <td><input type="text" className={"inputtext"} onChange={(ev)=>{setuserName(ev.target.value)}}/></td>
-                </tr>
-                <tr>
-                    <td><label htmlFor="">
-                        {props.sendlanguage === "en" ? "Password" : ""}
-                        {props.sendlanguage === "fr" ? "Mon véhicule" : ""}
-                        {props.sendlanguage === "sp" ? "Mi vehiculo" : ""}
-                    </label></td>
-                    <td><input type="password" className={"inputtext"} onChange={(ev)=>{setPass(ev.target.value)}}/></td>
-                </tr>
-                
-            </table>
+        <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+            <div className={"registerpanel"}>
+                <table >
+                    <tr>
+                        <td><label htmlFor="">
+                            {props.sendlanguage === "en" ? "Username" : ""}
+                            {props.sendlanguage === "fr" ? "Mon nom" : ""}
+                            {props.sendlanguage === "sp" ? "Mi nombre" : ""}
+                        </label></td>
+                        <td><input type="text" className={"inputtext"} onChange={(ev)=>{setuserName(ev.target.value)}}/></td>
+                    </tr>
+                    <tr>
+                        <td><label htmlFor="">
+                            {props.sendlanguage === "en" ? "Password" : ""}
+                            {props.sendlanguage === "fr" ? "Mon véhicule" : ""}
+                            {props.sendlanguage === "sp" ? "Mi vehiculo" : ""}
+                        </label></td>
+                        <td><input type="password" className={"inputtext"} onChange={(ev)=>{setPass(ev.target.value)}}/></td>
+                    </tr>
+                    
+                </table>
 
-            <button onClick={login}>Login</button><br/><br/>
-            {isLogin ? <Redirect to="loginsuccesmenu"/> : ""}
+                <button onClick={login}>Login</button><br/><br/>
+                {isLogin ? <Redirect to="loginsuccesmenu"/> : ""}
+            </div>
         </div>
     )
 }

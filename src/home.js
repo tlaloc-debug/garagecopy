@@ -1,12 +1,32 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Carousel from "./carousel.js";
 import "./home.css";
 import { Youtube } from 'react-bootstrap-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import MyShopMaps from "./maps-shops.js";
+import axios from "axios";
 
 function Home(props) {
+
+    const [reviews, setreviews] = useState([])
+    let stars = [0,0,0,0,0,0];
+    let average = 0;
+    
+    const getAllReviews = () => {
+        axios.get("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/allreviewsfixcar").then((response)=> {
+            setreviews(response.data);
+        })
+    }
+
+    useEffect(() => {
+        getAllReviews();
+    }, []);
+
+    const getAverage = (count) => {
+        average = ((stars[0]*1 + stars[1]*2 + stars[2]*3 + stars[3]*4 + stars[4]*5) / (stars[5]*10)*10).toFixed(1);
+        return average;
+    }
 
     return (
         <div>
@@ -79,12 +99,41 @@ function Home(props) {
                     <Col sm="6">
                         <div className={"align_horizontal average"}>
 
+                                {reviews.map((countstars) => {
+                                    if (countstars.stars === 1) stars[0] = stars[0]+1;
+                                    
+                                    
+                                    if (countstars.stars === 2) stars[1] = stars[1]+1;
+                                        
+                                       
+                                    
+                                    if (countstars.stars === 3) stars[2] = stars[2]+1;
+                                        
+                                        
+                                    
+                                    if (countstars.stars === 4) stars[3] = stars[3]+1;
+                                        
+                                        
+                                    
+                                    if (countstars.stars === 5) stars[4] = stars[4]+1;
+                                        
+                                        
+                                    
+                                    stars[5] = stars[5] + 1
+                                })}
+
                             <div >
                                 <div className={"align_horizontal"}>
-                                    <div style={{fontSize: "2.5em", height: "50px"}}>2.5</div>
+                                    <div style={{fontSize: "2.5em", height: "50px"}}>{getAverage(stars)}</div>
                                 </div>
                                 <div className={"align_horizontal"}>
-                                    <div style={{color: "#fdc91b", fontSize: "1.8em"}}>★★★☆☆</div>
+                                    <div style={{color: "#fdc91b", fontSize: "1.8em"}}>
+                                        {Math.trunc(average) === 1 ? "★☆☆☆☆" : ""}
+                                        {Math.trunc(average) === 2 ? "★★☆☆☆" : ""}
+                                        {Math.trunc(average) === 3 ? "★★★☆☆" : ""}
+                                        {Math.trunc(average) === 4 ? "★★★★☆" : ""}
+                                        {Math.trunc(average) === 5 ? "★★★★★" : ""}
+                                    </div>   
                                 </div>
                                 <div className={"align_horizontal"}>
                                     <div>
@@ -97,12 +146,14 @@ function Home(props) {
 
                             <div className={"rating_bars"}>
 
+                                
+
                                 <div className={"align_horizontal"}>
                                     <div className={"rating_progress_container"}> 
                                         <div className={"rating_progress"} style={{width: "80%"}}></div> 
                                         <div className={"little_stars"}>★★★★★</div>   
                                     </div>
-                                    <div className={"showpercentage"}>80%</div><br/>
+                                    <div className={"showpercentage"}>{Math.trunc((stars[4]/stars[5])*100) + "%"}</div><br/>
                                 </div>
 
                                 <div className={"align_horizontal"}>
@@ -110,7 +161,7 @@ function Home(props) {
                                         <div className={"rating_progress"} style={{width: "60%"}}></div> 
                                         <div className={"little_stars"}>★★★★☆</div>
                                     </div>
-                                    <div className={"showpercentage"}>80%</div><br/>
+                                    <div className={"showpercentage"}>{Math.trunc((stars[3]/stars[5])*100) + "%"}</div><br/>
                                 </div>
 
                                 <div className={"align_horizontal"}>
@@ -118,7 +169,7 @@ function Home(props) {
                                         <div className={"rating_progress"} style={{width: "40%"}}></div> 
                                         <div className={"little_stars"}>★★★☆☆</div>
                                     </div>
-                                    <div className={"showpercentage"}>80%</div><br/>
+                                    <div className={"showpercentage"}>{Math.trunc((stars[2]/stars[5])*100) + "%"}</div><br/>
                                 </div>
 
                                 <div className={"align_horizontal"}>
@@ -126,7 +177,7 @@ function Home(props) {
                                         <div className={"rating_progress"} style={{width: "20%"}}></div> 
                                         <div className={"little_stars"}>★★☆☆☆</div>
                                     </div>
-                                    <div className={"showpercentage"}>80%</div><br/>
+                                    <div className={"showpercentage"}>{Math.trunc((stars[1]/stars[5])*100) + "%"}</div><br/>
                                 </div>
 
                                 <div className={"align_horizontal"}>
@@ -134,132 +185,53 @@ function Home(props) {
                                         <div className={"rating_progress"} style={{width: "10%"}}></div> 
                                         <div className={"little_stars"}>★☆☆☆☆</div>
                                     </div>
-                                    <div className={"showpercentage"}>80%</div><br/>
+                                    <div className={"showpercentage"}>{Math.trunc((stars[0]/stars[5])*100) + "%"}</div><br/>
                                 </div>
                                 
                             </div>
                         </div>
 
                         <div className={"reviews"}>
-                            <div className={"person"}>
-                                <div className={"main-face face1"}></div>
-                                <div className={"info"}>
-                                    <div style={{marginLeft: "5px"}}>
-                                        <div className={"timeposition"}>
-                                            {props.sendlanguage === "en" ? "8 days ago" : ""}
-                                            {props.sendlanguage === "fr" ? "il y a 8 jours" : ""}
-                                            {props.sendlanguage === "sp" ? "hace 8 días " : ""}
-                                        </div>
-                                        <div>Maria</div>
-                                        <div className={"timeposition"}>
-                                            {props.sendlanguage === "en" ? "Student" : ""}
-                                            {props.sendlanguage === "fr" ? "Étudiant" : ""}
-                                            {props.sendlanguage === "sp" ? "Estudiante" : ""}
-                                        </div>
-                                    </div>
-                                </div>
                                 
-                                <div className={"comment"}>
-                                    <div className={"starsComments"}>★★★★★</div>
-                                    <div>Best bodyshop ever.</div>
-                                </div>
-                            </div>
+                            {reviews.filter((items) => {
+                                if (items.language.includes(props.sendlanguage)){
+                                    return items
+                                }}).map((items) => {
+                                    return (
+                                        <div>
+                                            <div className={"person"}>
+                                                <div className={"main-face face1"}></div>
+                                                <div className={"info"}>
+                                                    <div style={{marginLeft: "5px"}}>
+                                                        <div className={"timeposition"}>
+                                                            {props.sendlanguage === "en" ? "8 days ago" : ""}
+                                                            {props.sendlanguage === "fr" ? "il y a 8 jours" : ""}
+                                                            {props.sendlanguage === "sp" ? "hace 8 días " : ""}
+                                                        </div>
+                                                        <div>{items.name}</div>
+                                                        <div className={"timeposition"}>
+                                                            {props.sendlanguage === "en" ? "Student" : ""}
+                                                            {props.sendlanguage === "fr" ? "Étudiant" : ""}
+                                                            {props.sendlanguage === "sp" ? "Estudiante" : ""}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                
+                                                <div className={"comment"}>
+                                                    <div className={"starsComments"}>
+                                                        {items.stars === 1 ? "★☆☆☆☆" : ""}
+                                                        {items.stars === 2 ? "★★☆☆☆" : ""}
+                                                        {items.stars === 3 ? "★★★☆☆" : ""}
+                                                        {items.stars === 4 ? "★★★★☆" : ""}
+                                                        {items.stars === 5 ? "★★★★★" : ""}
+                                                    </div>
+                                                    <div>{items.myreview}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                            })}     
 
-                            <div className={"person"}>
-                                <div className={"main-face face2"}></div>
-                                <div className={"info"}>
-                                    <div style={{marginLeft: "5px"}}>
-                                        <div className={"timeposition"}>
-                                            {props.sendlanguage === "en" ? "8 days ago" : ""}
-                                            {props.sendlanguage === "fr" ? "il y a 8 jours" : ""}
-                                            {props.sendlanguage === "sp" ? "hace 8 días " : ""}
-                                        </div>
-                                        <div>Juan</div>
-                                        <div className={"timeposition"}>
-                                            {props.sendlanguage === "en" ? "Student" : ""}
-                                            {props.sendlanguage === "fr" ? "Étudiant" : ""}
-                                            {props.sendlanguage === "sp" ? "Estudiante" : ""}
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div className={"comment"}>
-                                    <div className={"starsComments"}>★★★★★</div>
-                                    <div>Best bodyshop ever.</div>
-                                </div>
-                            </div>
-
-                            <div className={"person"}>
-                                <div className={"main-face face3"}></div>
-                                <div className={"info"}>
-                                    <div style={{marginLeft: "5px"}}>
-                                        <div className={"timeposition"}>
-                                            {props.sendlanguage === "en" ? "8 days ago" : ""}
-                                            {props.sendlanguage === "fr" ? "il y a 8 jours" : ""}
-                                            {props.sendlanguage === "sp" ? "hace 8 días " : ""}
-                                        </div>
-                                        <div>Laura</div>
-                                        <div className={"timeposition"}>
-                                            {props.sendlanguage === "en" ? "Student" : ""}
-                                            {props.sendlanguage === "fr" ? "Étudiant" : ""}
-                                            {props.sendlanguage === "sp" ? "Estudiante" : ""}
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div className={"comment"}>
-                                    <div className={"starsComments"}>★★★★★</div>
-                                    <div>Best bodyshop ever.</div>
-                                </div>
-                            </div>
-
-                            <div className={"person"}>
-                                <div className={"main-face face4"}></div>
-                                <div className={"info"}>
-                                    <div style={{marginLeft: "5px"}}>
-                                        <div className={"timeposition"}>
-                                            {props.sendlanguage === "en" ? "8 days ago" : ""}
-                                            {props.sendlanguage === "fr" ? "il y a 8 jours" : ""}
-                                            {props.sendlanguage === "sp" ? "hace 8 días " : ""}
-                                        </div>
-                                        <div>Panfilo</div>
-                                        <div className={"timeposition"}>
-                                            {props.sendlanguage === "en" ? "Student" : ""}
-                                            {props.sendlanguage === "fr" ? "Étudiant" : ""}
-                                            {props.sendlanguage === "sp" ? "Estudiante" : ""}
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div className={"comment"}>
-                                    <div className={"starsComments"}>★★★★★</div>
-                                    <div>Best bodyshop ever.</div>
-                                </div>
-                            </div>
-
-                            <div className={"person"}>
-                                <div className={"main-face face5"}></div>
-                                <div className={"vertical"}>
-                                    <div style={{marginLeft: "5px"}}>
-                                        <div className={"timeposition"}>
-                                            {props.sendlanguage === "en" ? "8 days ago" : ""}
-                                            {props.sendlanguage === "fr" ? "il y a 8 jours" : ""}
-                                            {props.sendlanguage === "sp" ? "hace 8 días " : ""}
-                                        </div>
-                                        <div>Sarah</div>
-                                        <div className={"timeposition"}>
-                                            {props.sendlanguage === "en" ? "Student" : ""}
-                                            {props.sendlanguage === "fr" ? "Étudiant" : ""}
-                                            {props.sendlanguage === "sp" ? "Estudiante" : ""}
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div className={"comment"}>
-                                    <div className={"starsComments"}>★★★★★</div>
-                                    <div>Best bodyshop ever.</div>
-                                </div>
-                            </div>
                         </div>
                     </Col>
 
