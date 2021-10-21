@@ -5,8 +5,11 @@ import 'react-calendar/dist/Calendar.css';
 import axios from "axios";
 import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import dayjs from 'dayjs';
 
 function Appointment(props) {
+
+    const initialsesionapp = JSON.parse(localStorage.getItem("savesesion")) || [""];
 
     const [dateState, setDateState] = useState(new Date());
     const [location, setlocation] = useState("");
@@ -36,6 +39,18 @@ function Appointment(props) {
             appointmentname: name,
             appointmentemail: email,
             appointmentphone: phone
+        }).then((response3)=>{
+            console.log(response3.data);
+            if (response3.data.command) setbook("YOu have succesfully book an appointment");
+        }) 
+    }
+
+    const BOOKappointmentlogin = () => {
+        axios.post("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/bookappointmentlogin", {
+            appointmentdate: dateState,
+            appointmenttime: timeselected,
+            appointmentlocation: location,
+            appname: initialsesionapp.usersave
         }).then((response3)=>{
             console.log(response3.data);
             if (response3.data.command) setbook("YOu have succesfully book an appointment");
@@ -119,7 +134,7 @@ function Appointment(props) {
                                     {props.sendlanguage === "sp" ? "Tu información de contacto:" : ""}
                                 </div><br />
                                 <table style={{width: "100%"}}>
-                                    <tr>
+                                    <tr style={initialsesionapp.sesionOn ? {display: "none"} : {}}>
                                         <td><label htmlFor="">
                                             {props.sendlanguage === "en" ? "My name" : ""}
                                             {props.sendlanguage === "fr" ? "Mon nom" : ""}
@@ -127,7 +142,7 @@ function Appointment(props) {
                                         </label></td>
                                         <td><input type="text" className={"inputtext"} onChange={(ev)=>{setname(ev.target.value)}}/></td>
                                     </tr>
-                                    <tr>
+                                    <tr style={initialsesionapp.sesionOn ? {display: "none"} : {}}>
                                         <td><label htmlFor="">
                                             {props.sendlanguage === "en" ? "My vehicle" : ""}
                                             {props.sendlanguage === "fr" ? "Mon véhicule" : ""}
@@ -135,7 +150,7 @@ function Appointment(props) {
                                         </label></td>
                                         <td><input type="text" className={"inputtext"} onChange={(ev)=>{setvehicle(ev.target.value)}}/></td>
                                     </tr>
-                                    <tr>
+                                    <tr style={initialsesionapp.sesionOn ? {display: "none"} : {}}>
                                         <td><label htmlFor="">
                                             {props.sendlanguage === "en" ? "My Email" : ""}
                                             {props.sendlanguage === "fr" ? "Mon Email" : ""}
@@ -143,7 +158,7 @@ function Appointment(props) {
                                         </label></td>
                                         <td><input type="text" className={"inputtext"} onChange={(ev)=>{setemail(ev.target.value)}}/></td>
                                     </tr>
-                                    <tr>
+                                    <tr style={initialsesionapp.sesionOn ? {display: "none"} : {}}>
                                         <td><label htmlFor="">
                                             {props.sendlanguage === "en" ? "My Phone" : ""}
                                             {props.sendlanguage === "fr" ? "Mon Téléphone" : ""}
@@ -162,11 +177,16 @@ function Appointment(props) {
                                     </tr>
                                 </table>
                                 <br />
-                                <div id={"bocknow-button"}>
+                                <div id={"bocknow-button"} style={initialsesionapp.sesionOn ? {display: "none"} : {}}>
                                     <button  onClick={BOOKappointment}>
                                         {props.sendlanguage === "en" ? "Book Now" : ""}
                                         {props.sendlanguage === "fr" ? "Scheduler" : ""}
                                         {props.sendlanguage === "sp" ? "Agendar" : ""}
+                                    </button>
+                                </div>
+                                <div id={"bocknow-button"} style={initialsesionapp.sesionOn ? {} : {display: "none"}}>
+                                    <button  onClick={BOOKappointmentlogin}>
+                                        booklogin
                                     </button>
                                 </div>
                             </div>

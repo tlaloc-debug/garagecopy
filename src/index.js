@@ -204,7 +204,7 @@ function App() {
                 <Route path="/shopmenu" ><Ourshops sendlanguage={language}/></Route >
                 <Route path="/servicesmenu"  ><Services sendlanguage={language}/></Route >
                 <Route path="/aboutmenu"  ><About sendlanguage={language}/></Route >
-                <Route path="/appointmentmenu"  ><Appointment sendlanguage={language}/></Route >
+                <Route path="/appointmentmenu"  ><Appointment sendlanguage={language} /></Route >
                 <Route path="/loginmenu"  ><MyLogin handleSetSesion={sesionLogin => {setsesionLogin(sesionLogin);}} sendlanguage={language}/></Route >
                 <Route path="/registermenu"  ><MyRegister sendlanguage={language}/></Route >
                 <Route path="/registersuccesmenu"  ><MyRegisterSucces sendlanguage={language}/></Route >

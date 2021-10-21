@@ -12,3 +12,18 @@
 .green {
     border: solid 2px green;
 }
+
+#myappointments {
+    width: 100px;
+}
+
+.hidereviewinput {
+    display: none;
+}
+
+.showreviewinput {
+    display: flex; 
+    justify-content: "center";
+}
+
+  
