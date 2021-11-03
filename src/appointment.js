@@ -5,7 +5,8 @@ import 'react-calendar/dist/Calendar.css';
 import axios from "axios";
 import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import dayjs from 'dayjs';
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 function Appointment(props) {
 
@@ -22,6 +23,7 @@ function Appointment(props) {
     const [phone, setphone] = useState ("");
     const [reason, setreason] = useState ("");
     let newarray=["9:00", "11:00", "13:00", "15:00"];
+    const [message, setmessage] = useState("");
 
     const selecttime = (timechose) => {
         times.map((Times, index)=>{
@@ -32,17 +34,44 @@ function Appointment(props) {
     }
 
     const BOOKappointment = () => {
-        axios.post("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/bookappointment", {
-            appointmentdate: dateState,
-            appointmenttime: timeselected,
-            appointmentlocation: location,
-            appointmentname: name,
-            appointmentemail: email,
-            appointmentphone: phone
-        }).then((response3)=>{
-            console.log(response3.data);
-            if (response3.data.command) setbook("YOu have succesfully book an appointment");
-        }) 
+        if (location === "" || dateState === "" || timeselected === "" || name === "" || email === "" || phone === "") {
+            if (props.sendlanguage === "en") setmessage("Please fill in all the required fields.")
+            if (props.sendlanguage === "fr") setmessage("Veuillez remplir tous les champs obligatoires.")
+            if (props.sendlanguage === "sp") setmessage("Por favor, rellene todos los campos obligatorios.")
+            
+        } else {
+            const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            const format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/; 
+            if (!re.test(email)) document.getElementById("emailinput").style.color="red";
+            if (format.test(name)) document.getElementById("nameinput").style.color="red";
+            if (re.test(email) && !format.test(name)){
+                axios.post("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/bookappointment", {
+                    appointmentdate: dateState,
+                    appointmenttime: timeselected,
+                    appointmentlocation: location,
+                    appointmentname: name,
+                    appointmentemail: email,
+                    appointmentphone: phone
+                }).then((response3)=>{
+                    console.log(response3.data);
+                    if (response3.data.command) {
+                        if (props.sendlanguage === "en") setbook("You have successfully booked an appointment.")
+                        if (props.sendlanguage === "fr") setbook("Vous avez pris un rendez-vous avec succès.")
+                        if (props.sendlanguage === "sp") setbook("Ha reservado con éxito una cita.")  
+                    }
+                }) 
+            }
+        }
+    }
+
+    const changeName = (myname) => {
+        if (document.getElementById("nameinput").style.color="red") document.getElementById("nameinput").style.color="black";
+        setname(myname);
+    }
+
+    const changeEmail = (myemail) => {
+        if (document.getElementById("emailinput").style.color="red") document.getElementById("emailinput").style.color="black";
+        setemail(myemail);
     }
 
     const BOOKappointmentlogin = () => {
@@ -53,7 +82,11 @@ function Appointment(props) {
             appname: initialsesionapp.usersave
         }).then((response3)=>{
             console.log(response3.data);
-            if (response3.data.command) setbook("YOu have succesfully book an appointment");
+            if (response3.data.command) {
+                if (props.sendlanguage === "en") setbook("You have successfully booked an appointment.")
+                if (props.sendlanguage === "fr") setbook("Vous avez pris un rendez-vous avec succès.")
+                if (props.sendlanguage === "sp") setbook("Ha reservado con éxito una cita.")  
+            }
         }) 
     }
 
@@ -88,6 +121,7 @@ function Appointment(props) {
                             {props.sendlanguage === "en" ? "Select A Location:" : ""}
                             {props.sendlanguage === "fr" ? "Sélectionnez Un Emplacement:" : ""}
                             {props.sendlanguage === "sp" ? "Selecciona Una Ubicación:" : ""}
+                            <span style={message ? {color: "red"} : {}}>{" *"}</span>
                         </div>
                     </div>
                     <div style={{display: "flex", justifyContent: "center"}}>     
@@ -100,13 +134,14 @@ function Appointment(props) {
                 <br />
 
                 <Container  >
-                    <Row xs="1" sm="3" className={"row justify-content-center"}>
+                    <Row  className={"row justify-content-center"}>
 
                         <Col xs="10" sm="4" > 
                             <div>
                                 {props.sendlanguage === "en" ? "Select A Date:" : ""}
                                 {props.sendlanguage === "fr" ? "Sélectionnez Une Date:" : ""}
                                 {props.sendlanguage === "sp" ? "Seleccione Una Fecha:" : ""}
+                                <span style={message ? {color: "red"} : {}}>{" *"}</span>
                                 </div><br />
                             <Calendar onChange={(e)=>{selectdate(e, resp => {console.log(resp)})}} value={dateState} />
                         </Col>
@@ -117,6 +152,7 @@ function Appointment(props) {
                                     {props.sendlanguage === "en" ? "Select A Time:" : ""}
                                     {props.sendlanguage === "fr" ? "Sélectionnez Une Heure:" : ""}
                                     {props.sendlanguage === "sp" ? "Seleccione Una Hora:" : ""}
+                                    <span style={message ? {color: "red"} : {}}>{" *"}</span>
                                     </div><br />
                                 {times.map((Times, index)=>{
                                     return (
@@ -139,8 +175,9 @@ function Appointment(props) {
                                             {props.sendlanguage === "en" ? "My name" : ""}
                                             {props.sendlanguage === "fr" ? "Mon nom" : ""}
                                             {props.sendlanguage === "sp" ? "Mi nombre" : ""}
+                                            <span style={message ? {color: "red"} : {}}>{" *"}</span>
                                         </label></td>
-                                        <td><input type="text" className={"inputtext"} onChange={(ev)=>{setname(ev.target.value)}}/></td>
+                                        <td><input id={"nameinput"} type="text" className={"inputtext"} onChange={(ev)=>{changeName(ev.target.value)}}/></td>
                                     </tr>
                                     <tr style={initialsesionapp.sesionOn ? {display: "none"} : {}}>
                                         <td><label htmlFor="">
@@ -148,23 +185,29 @@ function Appointment(props) {
                                             {props.sendlanguage === "fr" ? "Mon véhicule" : ""}
                                             {props.sendlanguage === "sp" ? "Mi vehiculo" : ""}
                                         </label></td>
-                                        <td><input type="text" className={"inputtext"} onChange={(ev)=>{setvehicle(ev.target.value)}}/></td>
+                                        <td><input type="text" className={"inputtext"} onChange={(ev)=>{changeEmail(ev.target.value)}}/></td>
                                     </tr>
                                     <tr style={initialsesionapp.sesionOn ? {display: "none"} : {}}>
                                         <td><label htmlFor="">
                                             {props.sendlanguage === "en" ? "My Email" : ""}
                                             {props.sendlanguage === "fr" ? "Mon Email" : ""}
                                             {props.sendlanguage === "sp" ? "Mi Email" : ""}
+                                            <span style={message ? {color: "red"} : {}}>{" *"}</span>
                                         </label></td>
-                                        <td><input type="text" className={"inputtext"} onChange={(ev)=>{setemail(ev.target.value)}}/></td>
+                                        <td><input id={"emailinput"} type="text" className={"inputtext"} onChange={(ev)=>{changeEmail(ev.target.value)}}/></td>
                                     </tr>
                                     <tr style={initialsesionapp.sesionOn ? {display: "none"} : {}}>
                                         <td><label htmlFor="">
                                             {props.sendlanguage === "en" ? "My Phone" : ""}
                                             {props.sendlanguage === "fr" ? "Mon Téléphone" : ""}
                                             {props.sendlanguage === "sp" ? "Mi Teléfono" : ""}
+                                            <span style={message ? {color: "red"} : {}}>{" *"}</span>
                                             </label></td>
-                                        <td><input type="text" className={"inputtext"} onChange={(ev)=>{setphone(ev.target.value)}}/></td>
+                                        <td><PhoneInput className={"inputtext"}
+                                                countries={["CA", "US", "MX"]}
+                                                defaultCountry="CA"
+                                                onChange={setphone}/>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style={{verticalAlign: "top"}}>
@@ -195,8 +238,9 @@ function Appointment(props) {
                     </Row >
 
                 </Container >
-
-                <div style={{width: "100%", height: "50px", textAlign: "center"}}>{book}</div>
+                
+                <div style={{width: "100%", height: "50px", textAlign: "center", marginTop: "30px"}}>{message}</div>
+                <div style={{width: "100%", height: "50px", textAlign: "center", marginTop: "30px"}}>{book}</div>
             </div>
         </div>
     )

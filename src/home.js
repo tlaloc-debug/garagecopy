@@ -24,7 +24,7 @@ function Home(props) {
     }, []);
 
     const getAverage = (count) => {
-        average = ((stars[0]*1 + stars[1]*2 + stars[2]*3 + stars[3]*4 + stars[4]*5) / (stars[5]*10)*10).toFixed(1);
+        average = ((stars[0]*1 + stars[1]*2 + stars[2]*3 + stars[3]*4 + stars[4]*5) / (reviews.length*10)*10).toFixed(1);
         return average;
     }
 
@@ -36,9 +36,9 @@ function Home(props) {
             
             <Container>
                 
-                <Row xs="12" sm="12"  >
+                <Row  >
             
-                    <Col sm="6">
+                    <Col sm="6" xs="12">
                         <div  style={{width: "100%", display: "flex", justifyContent: "center"}}>
                             <div className={"littleboxes-container"}>
                                 <div className={"lenguaje"}>
@@ -96,30 +96,15 @@ function Home(props) {
                         </div>
                     </Col>
                     
-                    <Col sm="6">
+                    <Col sm="6" xs="12">
                         <div className={"align_horizontal average"}>
 
                                 {reviews.map((countstars) => {
                                     if (countstars.stars === 1) stars[0] = stars[0]+1;
-                                    
-                                    
                                     if (countstars.stars === 2) stars[1] = stars[1]+1;
-                                        
-                                       
-                                    
                                     if (countstars.stars === 3) stars[2] = stars[2]+1;
-                                        
-                                        
-                                    
                                     if (countstars.stars === 4) stars[3] = stars[3]+1;
-                                        
-                                        
-                                    
                                     if (countstars.stars === 5) stars[4] = stars[4]+1;
-                                        
-                                        
-                                    
-                                    stars[5] = stars[5] + 1
                                 })}
 
                             <div >
@@ -150,42 +135,42 @@ function Home(props) {
 
                                 <div className={"align_horizontal"}>
                                     <div className={"rating_progress_container"}> 
-                                        <div className={"rating_progress"} style={{width: Math.trunc((stars[4]/stars[5])*100)}}></div> 
+                                        <div className={"rating_progress"} style={{width: Math.trunc((stars[4]/reviews.length)*100)}}></div> 
                                         <div className={"little_stars"}>★★★★★</div>   
                                     </div>
-                                    <div className={"showpercentage"}>{Math.trunc((stars[4]/stars[5])*100) + "%"}</div><br/>
+                                    <div className={"showpercentage"}>{Math.trunc((stars[4]/reviews.length)*100) + "%"}</div><br/>
                                 </div>
 
                                 <div className={"align_horizontal"}>
                                     <div className={"rating_progress_container"}> 
-                                        <div className={"rating_progress"} style={{width: Math.trunc((stars[3]/stars[5])*100)}}></div> 
+                                        <div className={"rating_progress"} style={{width: Math.trunc((stars[3]/reviews.length)*100)}}></div> 
                                         <div className={"little_stars"}>★★★★☆</div>
                                     </div>
-                                    <div className={"showpercentage"}>{Math.trunc((stars[3]/stars[5])*100) + "%"}</div><br/>
+                                    <div className={"showpercentage"}>{Math.trunc((stars[3]/reviews.length)*100) + "%"}</div><br/>
                                 </div>
 
                                 <div className={"align_horizontal"}>
                                     <div className={"rating_progress_container"}> 
-                                        <div className={"rating_progress"} style={{width: Math.trunc((stars[2]/stars[5])*100)}}></div> 
+                                        <div className={"rating_progress"} style={{width: Math.trunc((stars[2]/reviews.length)*100)}}></div> 
                                         <div className={"little_stars"}>★★★☆☆</div>
                                     </div>
-                                    <div className={"showpercentage"}>{Math.trunc((stars[2]/stars[5])*100) + "%"}</div><br/>
+                                    <div className={"showpercentage"}>{Math.trunc((stars[2]/reviews.length)*100) + "%"}</div><br/>
                                 </div>
 
                                 <div className={"align_horizontal"}>
                                     <div className={"rating_progress_container"}> 
-                                        <div className={"rating_progress"} style={{width: Math.trunc((stars[1]/stars[5])*100)}}></div> 
+                                        <div className={"rating_progress"} style={{width: Math.trunc((stars[1]/reviews.length)*100)}}></div> 
                                         <div className={"little_stars"}>★★☆☆☆</div>
                                     </div>
-                                    <div className={"showpercentage"}>{Math.trunc((stars[1]/stars[5])*100) + "%"}</div><br/>
+                                    <div className={"showpercentage"}>{Math.trunc((stars[1]/reviews.length)*100) + "%"}</div><br/>
                                 </div>
 
                                 <div className={"align_horizontal"}>
                                     <div className={"rating_progress_container"}> 
-                                        <div className={"rating_progress"} style={{width: Math.trunc((stars[0]/stars[5])*100)}}></div> 
+                                        <div className={"rating_progress"} style={{width: Math.trunc((stars[0]/reviews.length)*100)}}></div> 
                                         <div className={"little_stars"}>★☆☆☆☆</div>
                                     </div>
-                                    <div className={"showpercentage"}>{Math.trunc((stars[0]/stars[5])*100) + "%"}</div><br/>
+                                    <div className={"showpercentage"}>{Math.trunc((stars[0]/reviews.length)*100) + "%"}</div><br/>
                                 </div>
                                 
                             </div>

@@ -48,15 +48,30 @@ function App() {
                     <div className={"topnav_grayarea"}>
                         <Container>
                     
-                            <Row xs="12" sm="12"  >
+                            <Row >
                                 <Col sm="4">
                                     <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
                                         <div className={"align_vertical"}>
                                             <div className={"canflag"}></div>
                                             <ul>
-                                                <li className={sesionLogin ? "notshown" : "topinbox"} style={{border: "none"}}><Link to="/loginmenu">Log In</Link></li>
-                                                <li className={sesionLogin ? "notshown" : "topinbox"} style={{border: "none"}}><Link to="/registermenu">Register</Link></li>
-                                                <li className={sesionLogin ? "topinbox" : "notshown"} style={{border: "none"}}><Link to="/loginsuccesmenu">Account</Link></li>
+                                                <li className={sesionLogin ? "notshown" : "topinbox"} style={{border: "none"}}>
+                                                    <Link to="/loginmenu">
+                                                        {language === "en" ? "Log In" : ""}
+                                                        {language === "fr" ? "Connexion " : ""}
+                                                        {language === "sp" ? "Acceder" : ""}
+                                                    </Link></li>
+                                                <li className={sesionLogin ? "notshown" : "topinbox"} style={{border: "none"}}>
+                                                    <Link to="/registermenu">
+                                                        {language === "en" ? "Register" : ""}
+                                                        {language === "fr" ? "Inscrire" : ""}
+                                                        {language === "sp" ? "Registrarse" : ""}
+                                                    </Link></li>
+                                                <li className={sesionLogin ? "topinbox" : "notshown"} style={{border: "none"}}>
+                                                    <Link to="/loginsuccesmenu">
+                                                        {language === "en" ? "Account" : ""}
+                                                        {language === "fr" ? "Compte" : ""}
+                                                        {language === "sp" ? "Cuenta" : ""}
+                                                    </Link></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -108,7 +123,7 @@ function App() {
 
                     <Container>
                 
-                        <Row xs="12" sm="12"  >
+                        <Row   >
                     
                             <Col sm="6">
                             <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
@@ -138,7 +153,7 @@ function App() {
                                         
                                         <div style={{display: "flex"}}>
                                             <div style={{color: "#408CCC"}}>NS</div>
-                                            <div style={{paddingLeft: "10px"}}>449-180-75-69</div>
+                                            <div style={{paddingLeft: "10px"}}>449-180-7569</div>
                                         </div>    
                                     </div>
                                 </div>
