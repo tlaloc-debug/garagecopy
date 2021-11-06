@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState , useEffect} from "react";
 import "./sales.css";
 import Axios from "axios";
 import { Container, Row, Col } from 'react-bootstrap';
@@ -15,6 +15,10 @@ function Sales(props) {
         }); 
     }
 
+    useEffect(() => {
+        showproducts();
+    }, []);
+
     const description = (number) => {
         myelement = document.getElementById(number);
         console.log(myelement.style.height)
@@ -30,9 +34,6 @@ function Sales(props) {
         <div>
             <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
                 <div className={"salespanel"}>
-
-                    <button onClick={showproducts}>Show All Products</button> <br />
-                    <h2>If Shopify ask you a pasword: autsep</h2>
 
                     <Container  >
                         <Row xs="1" sm="3" className={"row justify-content-center"}>
@@ -52,7 +53,7 @@ function Sales(props) {
                                                             <div id={collections.node.title+index} className={"articlesize"} onClick={(ev)=>{description(ev.target.id)}}>
                                                                 {article.node.title}
                                                                 <div className={"inventory"}>
-                                                                    <div>Stock: {article.node.totalInventory}</div>
+                                                                    <div>{article.node.totalInventory > 0 ? "On Stock" : "Out of Stock"}</div>
                                                                     {article.node.variants.edges.map((hola)=>{
                                                                         return (
                                                                             <div>
@@ -63,7 +64,7 @@ function Sales(props) {
                                                                     })}
                                                                 
                                                                 </div>
-                                                                <div className={"storelink"}><a href={"https://tlaloc-debug-dev.myshopify.com/products/"+article.node.title}>Check on store</a></div>
+                                                                <div className={"storelink"}><a href={"https://tlaloc-debug.myshopify.com/products/"+article.node.title}>Check on store</a></div>
                                                                 
                                                             </div>
                                                         )
@@ -91,7 +92,7 @@ function Sales(props) {
                                                             <div id={collections.node.title+index} className={"articlesize"} onClick={(ev)=>{description(ev.target.id)}}>
                                                                 {article.node.title}
                                                                 <div className={"inventory"}>
-                                                                    <div>Stock: {article.node.totalInventory}</div>
+                                                                    <div>{article.node.totalInventory > 0 ? "On Stock" : "Out of Stock"}</div>
                                                                     {article.node.variants.edges.map((hola)=>{
                                                                         return (
                                                                             <div>
@@ -102,7 +103,7 @@ function Sales(props) {
                                                                     })}
                                                                 
                                                                 </div>
-                                                                <div className={"storelink"}><a href={"https://tlaloc-debug-dev.myshopify.com/products/"+article.node.title}>Check on store</a></div>
+                                                                <div className={"storelink"}><a href={"https://tlaloc-debug.myshopify.com/products/"+article.node.title}>Check on store</a></div>
                                                                 
                                                             </div>
                                                         )
@@ -131,7 +132,7 @@ function Sales(props) {
                                                             <div id={collections.node.title+index} className={"articlesize"} onClick={(ev)=>{description(ev.target.id)}}>
                                                                 {article.node.title}
                                                                 <div className={"inventory"}>
-                                                                    <div>Stock: {article.node.totalInventory}</div>
+                                                                    <div>{article.node.totalInventory > 0 ? "On Stock" : "Out of Stock"}</div>
                                                                     {article.node.variants.edges.map((hola)=>{
                                                                         return (
                                                                             <div>
@@ -142,7 +143,7 @@ function Sales(props) {
                                                                     })}
                                                                 
                                                                 </div>
-                                                                <div className={"storelink"}><a href={"https://tlaloc-debug-dev.myshopify.com/products/"+article.node.title}>Check on store</a></div>
+                                                                <div className={"storelink"}><a href={"https://tlaloc-debug.myshopify.com/products/"+article.node.title}>Check on store</a></div>
                                                                 
                                                             </div>
                                                         )
@@ -173,7 +174,7 @@ function Sales(props) {
                                                             <div id={collections.node.title+index} className={"articlesize"} onClick={(ev)=>{description(ev.target.id)}}>
                                                                 {article.node.title}
                                                                 <div className={"inventory"}>
-                                                                    <div>Stock: {article.node.totalInventory}</div>
+                                                                    <div>{article.node.totalInventory > 0 ? "On Stock" : "Out of Stock"}</div>
                                                                     {article.node.variants.edges.map((hola)=>{
                                                                         return (
                                                                             <div>
@@ -184,7 +185,7 @@ function Sales(props) {
                                                                     })}
                                                                 
                                                                 </div>
-                                                                <div className={"storelink"}><a href={"https://tlaloc-debug-dev.myshopify.com/products/"+article.node.title}>Check on store</a></div>
+                                                                <div className={"storelink"}><a href={"https://tlaloc-debug.myshopify.com/products/"+article.node.title}>Check on store</a></div>
                                                                 
                                                             </div>
                                                         )
@@ -212,7 +213,7 @@ function Sales(props) {
                                                             <div id={collections.node.title+index} className={"articlesize"} onClick={(ev)=>{description(ev.target.id)}}>
                                                                 {article.node.title}
                                                                 <div className={"inventory"}>
-                                                                    <div>Stock: {article.node.totalInventory}</div>
+                                                                    <div>{article.node.totalInventory > 0 ? "On Stock" : "Out of Stock"}</div>
                                                                     {article.node.variants.edges.map((hola)=>{
                                                                         return (
                                                                             <div>
@@ -223,7 +224,7 @@ function Sales(props) {
                                                                     })}
                                                                 
                                                                 </div>
-                                                                <div className={"storelink"}><a href={"https://tlaloc-debug-dev.myshopify.com/products/"+article.node.title}>Check on store</a></div>
+                                                                <div className={"storelink"}><a href={"https://tlaloc-debug.myshopify.com/products/"+article.node.title}>Check on store</a></div>
                                                                 
                                                             </div>
                                                         )
