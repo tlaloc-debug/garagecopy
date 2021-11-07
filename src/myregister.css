@@ -18,8 +18,47 @@
 }
 
 .showreviewinput {
-    display: flex; 
-    justify-content: "center";
+    display: block; 
 }
 
-  
+.login-button {
+    text-align: center;
+    color: white;
+    background-color: #408CCC;
+    border: none;
+    border-radius: 0;
+    margin: 5px 0px;  
+}  
+
+.link-login-button {
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.link-login-button:hover {
+    color: white;
+}
+
+.login-success-container {
+    display: flex;
+    justify-content: center;
+}
+
+.div-stars {
+    font-size: 2em;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.logout-button {
+    background-color: white;
+    color: #408CCC;
+    border: solid #408CCC;
+    padding: 0px 10px;
+}
+
+@media only screen and (max-width: 991px) {
+    #myappointments {
+        width: auto;
+    }
+}

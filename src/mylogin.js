@@ -32,11 +32,15 @@ function MyLogin(props){
                                 localStorage.setItem("savesesion", JSON.stringify({sesionOn: true, usersave: userName}));
                                 setisLogin(true);
                             } else {
-                                setmessage("Wrong password")
+                                if (props.sendlanguage === "en") setmessage("We were expecting another password.")
+                                if (props.sendlanguage === "fr") setmessage("Nous attendions un autre mot de passe.")
+                                if (props.sendlanguage === "sp") setmessage("Esperábamos otra contraseña.")
                             }
                             })
                         } else {
-                            setmessage("NO register")
+                            if (props.sendlanguage === "en") setmessage("No such user.")
+                            if (props.sendlanguage === "fr") setmessage("Aucune utilisateur.")
+                            if (props.sendlanguage === "sp") setmessage("Este usuario no existe. ")
                         }
                     })
                 }
@@ -51,43 +55,51 @@ function MyLogin(props){
 
     return (
         <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
-            <div className={"registerpanel"} style={{height: "420px"}}>
-                <Container>
-                    <Row xs="1" sm="2" className="justify-content-center" >
-                        <Col   className="justify-content-center">
-                            
-                            <table >
-                                <tr>
-                                    <td><label htmlFor="">
-                                        {props.sendlanguage === "en" ? "Username" : ""}
-                                        {props.sendlanguage === "fr" ? "Mon nom" : ""}
-                                        {props.sendlanguage === "sp" ? "Mi nombre" : ""}
-                                    </label></td>
-                                    <td><input id={"nameinput"} type="text" className={"inputtext"} onChange={(ev)=>{changeUSerName(ev.target.value)}}/></td>
-                                </tr>
-                                <tr>
-                                    <td><label htmlFor="">
-                                        {props.sendlanguage === "en" ? "Password" : ""}
-                                        {props.sendlanguage === "fr" ? "Mot de Passe" : ""}
-                                        {props.sendlanguage === "sp" ? "Contraseña " : ""}
-                                    </label></td>
-                                    <td><input type="password" className={"inputtext"} onChange={(ev)=>{setPass(ev.target.value)}}/></td>
-                                </tr>
-                                
-                            </table>
+            <div className={"registerpanel"} >
+                <div style={{width: "100%", height: "420px", display: "flex", alignItems: "center"}}>
+                    <Container>
+                        <Row className="justify-content-center">
+                            <Col xs="10" sm="6" >
+                                <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+                                    <table >
+                                        <tr >
+                                            <td style={{paddingRight: "10px"}}><label htmlFor="">
+                                                {props.sendlanguage === "en" ? "Username" : ""}
+                                                {props.sendlanguage === "fr" ? "Mon nom" : ""}
+                                                {props.sendlanguage === "sp" ? "Mi nombre" : ""}
+                                            </label></td>
+                                            <td style={{padding: "10px 0px"}}><input id={"nameinput"} type="text" className={"inputtext"} onChange={(ev)=>{changeUSerName(ev.target.value)}}/></td>
+                                        </tr>
+                                        <tr>
+                                            <td ><label htmlFor="">
+                                                {props.sendlanguage === "en" ? "Password" : ""}
+                                                {props.sendlanguage === "fr" ? "Mot de Passe" : ""}
+                                                {props.sendlanguage === "sp" ? "Contraseña " : ""}
+                                            </label></td>
+                                            <td style={{padding: "10px 0px"}}><input type="password" className={"inputtext"} onChange={(ev)=>{setPass(ev.target.value)}}/></td>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
 
-                            <button onClick={login}>Login</button><br/><br/>
-                            {isLogin ? <Redirect to="loginsuccesmenu"/> : ""}
-                            {message}
-                           
-                        </Col>
+                                <div style={{width: "100%", display: "flex", justifyContent: "center", padding: "20px 0px"}}>
+                                    <button onClick={login} class={"login-button"}>Login</button>
+                                </div>
+                                <br/><br/>
+                                {isLogin ? <Redirect to="loginsuccesmenu"/> : ""}
+                                <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+                                    {message}
+                                </div>
+                               
+                            </Col>
 
-                        <Col  >
-                       
-                        </Col>
-                    </Row>
+                            <Col xs="10" sm="6" >
                         
-                </Container>
+                            </Col>
+                        </Row>
+                            
+                    </Container>
+                </div>
             </div>
         </div>
     )

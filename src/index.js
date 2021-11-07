@@ -13,6 +13,7 @@ import MyLogin from "./mylogin";
 import MyRegister from "./myregister";
 import MyRegisterSucces from "./registersucces";
 import MyLoginSucces from "./loginsucces";
+import MyAppointmentSucces from "./appointmentsucces";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -224,6 +225,7 @@ function App() {
                 <Route path="/registermenu"  ><MyRegister sendlanguage={language}/></Route >
                 <Route path="/registersuccesmenu"  ><MyRegisterSucces sendlanguage={language}/></Route >
                 <Route path="/loginsuccesmenu"  ><MyLoginSucces handleSetSesion={sesionLogin => {setsesionLogin(sesionLogin);}} sendlanguage={language}/></Route >
+                <Route path="/appointmentsuccestext"  ><MyAppointmentSucces sendlanguage={language}/></Route >
             </Switch>
     
             <div className={"align_horizontal"}>

@@ -31,7 +31,7 @@ function Home(props) {
     return (
         <div>
             <div >
-                <Carousel />
+                <Carousel sendlanguage={props.sendlanguage}/>
             </div>
             
             <Container>
@@ -128,10 +128,8 @@ function Home(props) {
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <div className={"rating_bars"}>
-
-                                
 
                                 <div className={"align_horizontal"}>
                                     <div className={"rating_progress_container"}> 
@@ -185,7 +183,9 @@ function Home(props) {
                                     return (
                                         <div>
                                             <div className={"person"}>
-                                                <div className={"main-face face1"}></div>
+                                                <div className={"main-face "}>
+                                                <img src={items.image} alt="" className={"link-photo"}/>
+                                                </div>
                                                 <div className={"info"}>
                                                     <div style={{marginLeft: "5px"}}>
                                                         <div className={"timeposition"}>

@@ -5,12 +5,14 @@ import 'react-calendar/dist/Calendar.css';
 import axios from "axios";
 import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
+import { BrowserRouter as Router, Route, Link, Switch, Redirect} from "react-router-dom";
 
 function Appointment(props) {
 
     const initialsesionapp = JSON.parse(localStorage.getItem("savesesion")) || [""];
+    const [isBookSucces, setisBookSucces] = useState(false);
 
     const [dateState, setDateState] = useState(new Date());
     const [location, setlocation] = useState("");
@@ -54,10 +56,8 @@ function Appointment(props) {
                     appointmentphone: phone
                 }).then((response3)=>{
                     console.log(response3.data);
-                    if (response3.data.command) {
-                        if (props.sendlanguage === "en") setbook("You have successfully booked an appointment.")
-                        if (props.sendlanguage === "fr") setbook("Vous avez pris un rendez-vous avec succès.")
-                        if (props.sendlanguage === "sp") setbook("Ha reservado con éxito una cita.")  
+                    if (response3.data.command === "INSERT") {
+                        setisBookSucces(true);
                     }
                 }) 
             }
@@ -82,10 +82,8 @@ function Appointment(props) {
             appname: initialsesionapp.usersave
         }).then((response3)=>{
             console.log(response3.data);
-            if (response3.data.command) {
-                if (props.sendlanguage === "en") setbook("You have successfully booked an appointment.")
-                if (props.sendlanguage === "fr") setbook("Vous avez pris un rendez-vous avec succès.")
-                if (props.sendlanguage === "sp") setbook("Ha reservado con éxito una cita.")  
+            if (response3.data.command === "INSERT") {
+                setisBookSucces(true);
             }
         }) 
     }
@@ -241,6 +239,9 @@ function Appointment(props) {
                 
                 <div style={{width: "100%", height: "50px", textAlign: "center", marginTop: "30px"}}>{message}</div>
                 <div style={{width: "100%", height: "50px", textAlign: "center", marginTop: "30px"}}>{book}</div>
+
+                {isBookSucces ? <Redirect to="appointmentsuccestext"/> : ""}
+
             </div>
         </div>
     )

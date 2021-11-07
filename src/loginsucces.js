@@ -6,6 +6,7 @@ import "./myregister.css";
 function MyLoginSucces(props){
 
     const initialsesionsave = JSON.parse(localStorage.getItem("savesesion")) || [""];
+    const [myUser, setmyUser] = useState(initialsesionsave.usersave || "");
     const [appointments, setappointments] = useState([]);
     const [isLogout, setisLogout] = useState(false);
     const [star, setstar] = useState([false,false,false, false, false, 0]);
@@ -63,82 +64,96 @@ function MyLoginSucces(props){
     }
 
     const setUpdateDate = (myindex) => {
-        setshowInputReview(true);
+        setshowInputReview(!showInputReview);
         setnewReviewDate(appointments[myindex].appdate);
         setnewReviewTime(appointments[myindex].apptime);
     }
 
     return (
         <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
-            <div className={"registerpanel"}>
-                <div>
-                   
-                    <h4>My Appointsments</h4>
-                    <hr />
-                    <table style={{width: "100%"}}>
-                        <tr>
-                            <th id={"myappointments"}>location</th>
-                            <th id={"myappointments"}>date</th>
-                            <th id={"myappointments"}>time</th>
-                            <th id={"myappointments"}>stars</th>
-                            <th>review</th>
-                        </tr>
-                        
-                        {appointments.map((apps, index)=>{
-                            return (
-                                
-                                <tr>
-                                    <td>{apps.applocation}</td>
-                                    <td>{apps.appdate ? apps.appdate.slice(0,apps.appdate.search("T")) : ""}</td>
-                                    <td>{apps.apptime}</td>
-                                    <td>{apps.stars ? apps.stars : ""}</td>
-                                    <td id={index} onClick={(ev) => setUpdateDate(ev.target.id)}>{apps.reviews ? apps.reviews : "Agregar review"}</td>
-                                </tr>
-                                
-                            )
-                        })}
-                     </table>
-                     <div className={showInputReview ? "showreviewinput" : "hidereviewinput"}>
-                         <div style={{display: "flex", justifyContent: "center"}}>
-                            <div id={"one"} style={{fontSize: "2em", cursor: "pointer"}} onClick={(ev)=>fillStars(ev.target.id)}>{star[0] ? "★" : "☆"}</div>
-                            <div id={"two"} style={{fontSize: "2em", cursor: "pointer"}} onClick={(ev)=>fillStars(ev.target.id)}>{star[1] ? "★" : "☆"}</div>
-                            <div id={"three"} style={{fontSize: "2em", cursor: "pointer"}} onClick={(ev)=>fillStars(ev.target.id)}>{star[2] ? "★" : "☆"}</div>
-                            <div id={"four"} style={{fontSize: "2em", cursor: "pointer"}} onClick={(ev)=>fillStars(ev.target.id)}>{star[3] ? "★" : "☆"}</div>
-                            <div id={"five"} style={{fontSize: "2em", cursor: "pointer"}} onClick={(ev)=>fillStars(ev.target.id)}>{star[4] ? "★" : "☆"}</div>
-                         </div>
-                         <div>
-                            <textarea name="" id="" cols="30" rows="2" onChange={(ev)=>{setmyReview(ev.target.value)}}></textarea>
-                         </div>
-                         <div>
-                            <button onClick={updateReview}>Enviar</button>
-                         </div>
-                     </div>
-                     <br />
-                     <div>Make new appointment</div>
-                     <br />
+            <div className={"registerpanel login-success-container"}>
+                <div style={{width: "90%"}}>
 
-                     <h4>My Reviews</h4>
-                     <hr />
-                     <div>leave review wihout appointment</div>
-                     <div style={{display: "flex", justifyContent: "center"}}>
-                         <div style={{display: "flex", justifyContent: "center"}}>
-                            <div id={"one"} style={{fontSize: "2em", cursor: "pointer"}} onClick={(ev)=>fillStars(ev.target.id)}>{star[0] ? "★" : "☆"}</div>
-                            <div id={"two"} style={{fontSize: "2em", cursor: "pointer"}} onClick={(ev)=>fillStars(ev.target.id)}>{star[1] ? "★" : "☆"}</div>
-                            <div id={"three"} style={{fontSize: "2em", cursor: "pointer"}} onClick={(ev)=>fillStars(ev.target.id)}>{star[2] ? "★" : "☆"}</div>
-                            <div id={"four"} style={{fontSize: "2em", cursor: "pointer"}} onClick={(ev)=>fillStars(ev.target.id)}>{star[3] ? "★" : "☆"}</div>
-                            <div id={"five"} style={{fontSize: "2em", cursor: "pointer"}} onClick={(ev)=>fillStars(ev.target.id)}>{star[4] ? "★" : "☆"}</div>
-                         </div>
-                         <div>
-                            <textarea name="" id="" cols="30" rows="2" onChange={(ev)=>{setmyReview(ev.target.value)}}></textarea>
-                         </div>
-                         <div>
-                            <button onClick={sendReview}>Enviar</button>
-                         </div>
-                     </div>
+                    <div style={{display: "flex", justifyContent: "space-between", padding: "20px 0px"}}>
+                        <div style={{fontSize: "1.2em"}}> Hi, {myUser} </div>
+                        <div>
+                            <button onClick={logout} className={"logout-button"}>Log out</button>
+                        </div>
+
+                    </div>
+
+                    <div style={{margin: "50px 0px"}}>
+                        <h4 >My Appointsments</h4>
+                        <hr />
+                        <table >
+                            <tr>
+                                <th id={"myappointments"}>location</th>
+                                <th id={"myappointments"}>date</th>
+                                <th id={"myappointments"}>time</th>
+                                <th id={"myappointments"}>stars</th>
+                                <th>review</th>
+                            </tr>
+                            
+                            {appointments.map((apps, index)=>{
+                                return (
+                                    
+                                    <tr>
+                                        <td>{apps.applocation}</td>
+                                        <td>{apps.appdate ? apps.appdate.slice(0,apps.appdate.search("T")) : ""}</td>
+                                        <td>{apps.apptime}</td>
+                                        <td>{apps.stars ? apps.stars : ""}</td>
+                                        <td id={index} onClick={(ev) => setUpdateDate(ev.target.id)} style={{cursor: "pointer"}}>{apps.reviews ? apps.reviews : "Add review"}</td>
+                                    </tr>
+                                    
+                                )
+                            })}
+                        </table>
+                        <div className={showInputReview ? "showreviewinput" : "hidereviewinput"}>
+                            <div >
+                                <div id={"one"} className={"div-stars"} onClick={(ev)=>fillStars(ev.target.id)}>{star[0] ? "★" : "☆"}</div>
+                                <div id={"two"} className={"div-stars"} onClick={(ev)=>fillStars(ev.target.id)}>{star[1] ? "★" : "☆"}</div>
+                                <div id={"three"} className={"div-stars"} onClick={(ev)=>fillStars(ev.target.id)}>{star[2] ? "★" : "☆"}</div>
+                                <div id={"four"} className={"div-stars"} onClick={(ev)=>fillStars(ev.target.id)}>{star[3] ? "★" : "☆"}</div>
+                                <div id={"five"} className={"div-stars"} onClick={(ev)=>fillStars(ev.target.id)}>{star[4] ? "★" : "☆"}</div>
+                            </div>
+                            <div>
+                                <textarea name="" id="" cols="30" rows="2" onChange={(ev)=>{setmyReview(ev.target.value)}}></textarea>
+                            </div>
+                            <div>
+                                <button onClick={updateReview} className={"login-button link-login-button"}>Send Review</button>
+                            </div>
+                        </div>
+                        <br />
+                        <div style={{display: "flex", justifyContent: "center"}}>
+                            <Link to="appointmentmenu" className={"login-button link-login-button"}>Make new appointment</Link>
+                        </div>
+                    </div>
+
+                    <div style={{marginBottom: "150px"}}>
+                        <h4 >My Reviews</h4>
+                        <hr />
+                        <div>Leave review wihout appointment</div>
+                        <div >
+                            <div >
+                                <div id={"one"} className={"div-stars"} onClick={(ev)=>fillStars(ev.target.id)}>{star[0] ? "★" : "☆"}</div>
+                                <div id={"two"} className={"div-stars"} onClick={(ev)=>fillStars(ev.target.id)}>{star[1] ? "★" : "☆"}</div>
+                                <div id={"three"} className={"div-stars"} onClick={(ev)=>fillStars(ev.target.id)}>{star[2] ? "★" : "☆"}</div>
+                                <div id={"four"} className={"div-stars"} onClick={(ev)=>fillStars(ev.target.id)}>{star[3] ? "★" : "☆"}</div>
+                                <div id={"five"} className={"div-stars"} onClick={(ev)=>fillStars(ev.target.id)}>{star[4] ? "★" : "☆"}</div>
+                            </div>
+                            <div>
+                                <textarea name="" id="" cols="30" rows="2" onChange={(ev)=>{setmyReview(ev.target.value)}}></textarea>
+                            </div>
+                            <div>
+                                <button onClick={sendReview} className={"login-button link-login-button"}>Send Review</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                
+                    {isLogout ? <Redirect to="/"/> : ""}  
+
                 </div>
-            
-                <button onClick={logout}>Log out</button>
-                {isLogout ? <Redirect to="/"/> : ""}
             </div>
         </div>
     )

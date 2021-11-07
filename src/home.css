@@ -156,6 +156,15 @@
     margin-right: 15px;
     border-radius: 50px;
     border: solid 2px #408CCC;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D3DBDC;
+}
+
+.link-photo {
+    width: 100%;
 }
 
 .face1 {
