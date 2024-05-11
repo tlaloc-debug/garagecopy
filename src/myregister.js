@@ -53,7 +53,7 @@ function MyRegister(props) {
                 if (re.test(email) && !format.test(name) && !format.test(userNameReg) && !(userNameReg.indexOf(' ') >= 0)){
                     if (passRegOne === passRegTwo) {
                         bcrypt.hash(passRegOne, 10, function(err, hash) {
-                        axios.post("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/register", {username: userNameReg, password: hash, myname: name, myvehicule: vehicle, myemail: email, myphone: phone, mylanguage: accountLanguage}).then((response)=>{
+                        axios.post("https://all-in-one-proxy-3187fcbdcf4f.herokuapp.com/https://connectto-cdf4284ddfed.herokuapp.com/register", {username: userNameReg, password: hash, myname: name, myvehicule: vehicle, myemail: email, myphone: phone, mylanguage: accountLanguage}).then((response)=>{
                             setresponseReg(response.data);
                             console.log(response.data)
                             if (response.data.command === "INSERT") {

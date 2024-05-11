@@ -19,9 +19,9 @@ function MyLogin(props){
         if (format.test(userName)) {
             document.getElementById("nameinput").style.color="red";
             } else {
-            axios.post("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/loginname", {username: userName}).then((response1)=> {
+            axios.post("https://all-in-one-proxy-3187fcbdcf4f.herokuapp.com/https://connectto-cdf4284ddfed.herokuapp.com/loginname", {username: userName}).then((response1)=> {
                 if (response1.data=="done"){
-                    axios.get("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/login").then((response2)=>{
+                    axios.get("https://all-in-one-proxy-3187fcbdcf4f.herokuapp.com/https://connectto-cdf4284ddfed.herokuapp.com/login").then((response2)=>{
                         console.log(response2)
                         if (response2.data.length>0){
                             

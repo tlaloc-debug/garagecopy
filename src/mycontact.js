@@ -12,7 +12,7 @@ function Contact(props){
     const [emailMessageForm, setemailMessageForm] = useState("");
 
     const sendEmail = () => {
-        axios.post("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/send-email", {emailName: emailNameForm, emailAccount: emailAccountForm, emailMessage: emailMessageForm}).then((response) => {console.log(response)})
+        axios.post("https://all-in-one-proxy-3187fcbdcf4f.herokuapp.com/https://connectto-cdf4284ddfed.herokuapp.com/send-email", {emailName: emailNameForm, emailAccount: emailAccountForm, emailMessage: emailMessageForm}).then((response) => {console.log(response)})
         }
     
     const changeEmailName = (myEmail) => {

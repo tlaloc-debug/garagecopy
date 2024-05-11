@@ -14,7 +14,7 @@ function Home(props) {
     let average = 0;
     
     const getAllReviews = () => {
-        axios.get("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/allreviewsfixcar").then((response)=> {
+        axios.get("https://all-in-one-proxy-3187fcbdcf4f.herokuapp.com/https://connectto-cdf4284ddfed.herokuapp.com/allreviewsfixcar").then((response)=> {
             setreviews(response.data);
         })
     }

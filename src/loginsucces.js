@@ -24,7 +24,7 @@ function MyLoginSucces(props){
     }
 
     const getAllAppointments = () => {
-        axios.get("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/userappointmentsfixcar").then((response1)=> {
+        axios.get("https://all-in-one-proxy-3187fcbdcf4f.herokuapp.com/https://connectto-cdf4284ddfed.herokuapp.com/userappointmentsfixcar").then((response1)=> {
             setappointments(response1.data);
         })
     }
@@ -40,7 +40,7 @@ function MyLoginSucces(props){
     }
 
     const updateReview = () => {
-        axios.post("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/updatereview", {
+        axios.post("https://all-in-one-proxy-3187fcbdcf4f.herokuapp.com/https://connectto-cdf4284ddfed.herokuapp.com/updatereview", {
             appname: initialsesionsave.usersave,    
             appdate: newReviewDate,
             apptime: newReviewTime,
@@ -53,7 +53,7 @@ function MyLoginSucces(props){
     }
 
     const sendReview = () => {
-        axios.post("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/sendreview", {
+        axios.post("https://all-in-one-proxy-3187fcbdcf4f.herokuapp.com/https://connectto-cdf4284ddfed.herokuapp.com/sendreview", {
             appname: initialsesionsave.usersave,    
             appstar: star[5],
             apptext: myReview

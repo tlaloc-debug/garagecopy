@@ -47,7 +47,7 @@ function Appointment(props) {
             if (!re.test(email)) document.getElementById("emailinput").style.color="red";
             if (format.test(name)) document.getElementById("nameinput").style.color="red";
             if (re.test(email) && !format.test(name)){
-                axios.post("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/bookappointment", {
+                axios.post("https://all-in-one-proxy-3187fcbdcf4f.herokuapp.com/https://connectto-cdf4284ddfed.herokuapp.com/bookappointment", {
                     appointmentdate: dateState,
                     appointmenttime: timeselected,
                     appointmentlocation: location,
@@ -75,7 +75,7 @@ function Appointment(props) {
     }
 
     const BOOKappointmentlogin = () => {
-        axios.post("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/bookappointmentlogin", {
+        axios.post("https://all-in-one-proxy-3187fcbdcf4f.herokuapp.com/https://connectto-cdf4284ddfed.herokuapp.com/bookappointmentlogin", {
             appointmentdate: dateState,
             appointmenttime: timeselected,
             appointmentlocation: location,
@@ -91,11 +91,11 @@ function Appointment(props) {
     const selectdate = (e) => {
         
             setDateState(e);
-            axios.post("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/searchdate", {
+            axios.post("https://all-in-one-proxy-3187fcbdcf4f.herokuapp.com/https://connectto-cdf4284ddfed.herokuapp.com/searchdate", {
                 searchdate: e,
             }).then((response1)=>{console.log(response1)
             if (response1.data=="done"){
-                axios.get("https://all-in-one-proxy.herokuapp.com/https://connectto.herokuapp.com/resultdate").then((response2)=>{
+                axios.get("https://all-in-one-proxy-3187fcbdcf4f.herokuapp.com/https://connectto-cdf4284ddfed.herokuapp.com/resultdate").then((response2)=>{
                         response2.data.map((horas)=>{
                             if(horas.time==="9:00") {newarray[0]=""}
                             if(horas.time==="11:00") {newarray[1]=""}
