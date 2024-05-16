@@ -11,7 +11,8 @@ function Sales(props) {
 
     const showproducts = () => {
         Axios.get("https://all-in-one-proxy-3187fcbdcf4f.herokuapp.com/https://connectto-cdf4284ddfed.herokuapp.com/products").then((response) => {
-            setcollect(response.data.data.collections.edges)
+            setcollect(response.data.data.collections.nodes);
+            console.log(response.data.data.collections.nodes);
         }); 
     }
 
@@ -39,192 +40,38 @@ function Sales(props) {
                         <Row xs="1" sm="3" className={"row justify-content-center"}>
                             <Col xs="8" sm="4" > 
                                 <div >
-                                    {collect.slice(0,1).map((collections, index)=>{
+                                    {collect.map((collections, index)=>{
                                         return (
                                             <div className={"products"}>
                                                 <div className={"producttext"}>
-                                                    {props.sendlanguage === "en" ? "13 inches" : ""}
+                                                    {collections.title}
+                                                    {/* {props.sendlanguage === "en" ? "13 inches" : ""}
                                                     {props.sendlanguage === "fr" ? "13 pouces" : ""}
-                                                    {props.sendlanguage === "sp" ? "13 pulgadas" : ""}
+                                                    {props.sendlanguage === "sp" ? "13 pulgadas" : ""} */}
                                                 </div>
                                                 <div className={"tiresizes"}>
-                                                    {collections.node.products.edges.map((article, index)=>{
+                                                    {collections.products.nodes.map((article, index)=>{
                                                         return (
-                                                            <div id={collections.node.title+index} className={"articlesize"} onClick={(ev)=>{description(ev.target.id)}}>
-                                                                {article.node.title}
+                                                            <div id={article.title+index} className={"articlesize"} onClick={(ev)=>{description(ev.target.id)}}>
+                                                                {article.title}
                                                                 <div className={"inventory"}>
-                                                                    <div>{article.node.totalInventory > 0 ? "On Stock" : "Out of Stock"}</div>
-                                                                    {article.node.variants.edges.map((hola)=>{
+                                                                    {article.variants.edges.map((hola)=>{
+                                                                        return (
+                                                                            <div>
+                                                                                <div>{hola.node.inventoryQuantity > 0 ? "On Stock" : "Out of Stock"}</div>
+                                                                            </div>
+                                                                        )
+                                                                    })}    
+                                                                    {article.variants.edges.map((hola)=>{
                                                                         return (
                                                                             <div>
                                                                                 <div>Price: ${hola.node.price}</div>
-                
                                                                             </div>
                                                                         )
                                                                     })}
                                                                 
                                                                 </div>
-                                                                <div className={"storelink"}><a href={"https://tlaloc-debug.myshopify.com/products/"+article.node.title}>Check on store</a></div>
-                                                                
-                                                            </div>
-                                                        )
-                                                    })}
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            </Col>
-
-                            <Col xs="8" sm="4" > 
-                                <div >
-                                    {collect.slice(1,2).map((collections, index)=>{
-                                        return (
-                                            <div className={"products"}>
-                                                <div className={"producttext"}>
-                                                    {props.sendlanguage === "en" ? "14 inches" : ""}
-                                                    {props.sendlanguage === "fr" ? "14 pouces" : ""}
-                                                    {props.sendlanguage === "sp" ? "14 pulgadas" : ""}
-                                                </div>
-                                                <div className={"tiresizes"}>
-                                                    {collections.node.products.edges.map((article, index)=>{
-                                                        return (
-                                                            <div id={collections.node.title+index} className={"articlesize"} onClick={(ev)=>{description(ev.target.id)}}>
-                                                                {article.node.title}
-                                                                <div className={"inventory"}>
-                                                                    <div>{article.node.totalInventory > 0 ? "On Stock" : "Out of Stock"}</div>
-                                                                    {article.node.variants.edges.map((hola)=>{
-                                                                        return (
-                                                                            <div>
-                                                                                <div>Price: ${hola.node.price}</div>
-                
-                                                                            </div>
-                                                                        )
-                                                                    })}
-                                                                
-                                                                </div>
-                                                                <div className={"storelink"}><a href={"https://tlaloc-debug.myshopify.com/products/"+article.node.title}>Check on store</a></div>
-                                                                
-                                                            </div>
-                                                        )
-                                                    })}
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                                
-                            </Col>
-
-                            <Col xs="8" sm="4" > 
-                                <div >
-                                    {collect.slice(2,3).map((collections, index)=>{
-                                        return (
-                                            <div className={"products"}>
-                                                <div className={"producttext"}>
-                                                    {props.sendlanguage === "en" ? "15 inches" : ""}
-                                                    {props.sendlanguage === "fr" ? "15 pouces" : ""}
-                                                    {props.sendlanguage === "sp" ? "15 pulgadas" : ""}
-                                                </div>
-                                                <div className={"tiresizes"}>
-                                                    {collections.node.products.edges.map((article, index)=>{
-                                                        return (
-                                                            <div id={collections.node.title+index} className={"articlesize"} onClick={(ev)=>{description(ev.target.id)}}>
-                                                                {article.node.title}
-                                                                <div className={"inventory"}>
-                                                                    <div>{article.node.totalInventory > 0 ? "On Stock" : "Out of Stock"}</div>
-                                                                    {article.node.variants.edges.map((hola)=>{
-                                                                        return (
-                                                                            <div>
-                                                                                <div>Price: ${hola.node.price}</div>
-                
-                                                                            </div>
-                                                                        )
-                                                                    })}
-                                                                
-                                                                </div>
-                                                                <div className={"storelink"}><a href={"https://tlaloc-debug.myshopify.com/products/"+article.node.title}>Check on store</a></div>
-                                                                
-                                                            </div>
-                                                        )
-                                                    })}
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            </Col>
-
-                        </Row >
-
-                        <Row xs="1" sm="2" className={"row justify-content-center"}>
-                            <Col xs="8" sm="4" > 
-                                <div >
-                                    {collect.slice(3,4).map((collections, index)=>{
-                                        return (
-                                            <div className={"products"}>
-                                                <div className={"producttext"}>
-                                                    {props.sendlanguage === "en" ? "16 inches" : ""}
-                                                    {props.sendlanguage === "fr" ? "16 pouces" : ""}
-                                                    {props.sendlanguage === "sp" ? "16 pulgadas" : ""}
-                                                </div>
-                                                <div className={"tiresizes"}>
-                                                    {collections.node.products.edges.map((article, index)=>{
-                                                        return (
-                                                            <div id={collections.node.title+index} className={"articlesize"} onClick={(ev)=>{description(ev.target.id)}}>
-                                                                {article.node.title}
-                                                                <div className={"inventory"}>
-                                                                    <div>{article.node.totalInventory > 0 ? "On Stock" : "Out of Stock"}</div>
-                                                                    {article.node.variants.edges.map((hola)=>{
-                                                                        return (
-                                                                            <div>
-                                                                                <div>Price: ${hola.node.price}</div>
-                
-                                                                            </div>
-                                                                        )
-                                                                    })}
-                                                                
-                                                                </div>
-                                                                <div className={"storelink"}><a href={"https://tlaloc-debug.myshopify.com/products/"+article.node.title}>Check on store</a></div>
-                                                                
-                                                            </div>
-                                                        )
-                                                    })}
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            </Col>
-
-                            <Col xs="8" sm="4" > 
-                                <div >
-                                    {collect.slice(4,5).map((collections, index)=>{
-                                        return (
-                                            <div className={"products"}>
-                                                <div className={"producttext"}>
-                                                    {props.sendlanguage === "en" ? "17 inches" : ""}
-                                                    {props.sendlanguage === "fr" ? "17 pouces" : ""}
-                                                    {props.sendlanguage === "sp" ? "17 pulgadas" : ""}
-                                                </div>
-                                                <div className={"tiresizes"}>
-                                                    {collections.node.products.edges.map((article, index)=>{
-                                                        return (
-                                                            <div id={collections.node.title+index} className={"articlesize"} onClick={(ev)=>{description(ev.target.id)}}>
-                                                                {article.node.title}
-                                                                <div className={"inventory"}>
-                                                                    <div>{article.node.totalInventory > 0 ? "On Stock" : "Out of Stock"}</div>
-                                                                    {article.node.variants.edges.map((hola)=>{
-                                                                        return (
-                                                                            <div>
-                                                                                <div>Price: ${hola.node.price}</div>
-                
-                                                                            </div>
-                                                                        )
-                                                                    })}
-                                                                
-                                                                </div>
-                                                                <div className={"storelink"}><a href={"https://tlaloc-debug.myshopify.com/products/"+article.node.title}>Check on store</a></div>
+                                                                <div className={"storelink"}><a href={"https://fixcar-store.myshopify.com/products/"+article.title}>Check on store</a></div>
                                                                 
                                                             </div>
                                                         )
